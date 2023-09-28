@@ -1,0 +1,55 @@
+body {
+ background: #f2f2f2;
+}
+
+
+h1 {
+ display: none;
+}
+
+a {
+ color: #333;
+ text-decoration: none;
+}
+
+dl {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+
+dt {
+ overflow: hidden;
+}
+
+dt > a {
+ display: flex;
+ align-items: center;
+ background: #fff;
+ cursor: pointer;
+ border-radius: 4px;
+ padding: 2em;
+ background-color: #fff;
+ border-radius: 4px;
+ border: 1px solid #e4ecf3;
+ margin: 20px 0 0;
+ height: 5em;
+ box-sizing: content-box;
+ line-height: 1.5em;
+ width: 19vw;
+ margin-top: 2em;
+ margin-left: 2em;
+ word-break: break-all;
+ display: -webkit-box;
+ -webkit-line-clamp: 3;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+dt > a > img {
+ width: 1.5em;
+ height: 1.5em;
+ border-radius: 50%;
+ margin-right: 0.6em;
+}
