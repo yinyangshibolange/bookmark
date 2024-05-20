@@ -17,5 +17,13 @@
 
  })
 
+ const dta = document.querySelectorAll("dt > a")
 
+ dta.forEach(item => {
+  console.log(item.innerHTML)
+  const newdiv = document.createElement("div")
+  newdiv.innerHTML = item.innerHTML
+  item.innerHTML = ""
+  item.appendChild(newdiv)
+ })
 })()
