@@ -1,0 +1,188 @@
+html,body {
+ width: 100%;
+ height: 100%;
+}
+
+body {
+ background: #f2f2f2;
+ padding: 20px 16px 20px 0;
+ margin: 0;
+ overflow-x: hidden;
+}
+
+
+h1 {
+ display: none;
+}
+
+a {
+ color: #333;
+ text-decoration: none;
+}
+
+dl {
+ display: flex;
+ flex-wrap: wrap;
+ width: calc(100% - 16px);
+}
+
+
+dt {
+ overflow: hidden;
+}
+
+dt > a {
+ display: flex;
+ align-items: center;
+ background: #fff;
+ cursor: pointer;
+ border-radius: 4px;
+ border-radius: 4px;
+ border: 1px solid #e4ecf3;
+ margin: 0;
+ /* height: 60px; */
+ box-sizing: content-box;
+ overflow: hidden;
+ word-break: break-all;
+ display: -webkit-box;
+ -webkit-line-clamp: 3;
+ -webkit-box-orient: vertical;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ margin-top: 16px;
+ margin-left: 16px;
+ padding: 16px;
+ background-color: #fff;
+}
+
+dt > a:hover {
+ background: #e5e5e5;
+}
+
+dt > a > img {
+ width: 22px;
+ height: 22px;
+ border-radius: 50%;
+ margin-right: 9px;
+}
+
+dt > h3 {
+ text-indent: 16px;
+ margin: 0 16px;
+ padding: 16px 0;
+ border-radius: 5px 5px 0 0;
+ background: #f2f1f3;
+ position: relative;
+ margin-right: 0 !important;
+
+
+ border: 1px solid #d2d2d2;
+ border-width: 1px 1px 1px 1px;
+}
+
+dt > h3::after {
+content: '>';
+position: absolute;
+right: 16px;
+top: 50%;
+transform: translateY(-50%);
+color: #999;
+}
+
+dt > h3:hover{
+ background: #e2e2e2;
+ cursor: pointer;
+}
+
+dt > dl {
+ margin: 0 16px 16px 16px;
+ background: #fff;
+ border: 1px solid #d2d2d2;
+ border-width: 0 1px 1px 1px;
+ padding-bottom: 20px;
+
+ border-radius: 0 0 5px 5px;
+overflow: hidden;
+transition: all 0.3s ease-in-out;
+}
+
+
+.content-item {
+ position: relative;
+ overflow: hidden;
+ -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    font-size: 16px;
+    max-height: 60px;
+}
+
+.content-item > img {
+ position: absolute;
+ width: 20px;
+ left: 0;
+ top: 0;
+}
+
+.content-item > div {
+text-indent: 30px;
+}
+
+
+.content-search {
+ background: #fff;
+ margin: 0 16px;
+ border-radius: 8px;
+ overflow: hidden;
+
+}
+.content-search > input {
+ padding: 16px;
+ border: none;
+ outline: none;
+ width: 100%;
+ font-size: 16px;
+ line-height: 25px;
+}
+
+body > dl {
+ margin-top: 0;
+ margin-right: 0;
+ width: 100%;
+ padding-bottom: 30px;
+}
+
+dl > dt > dl {
+ margin-right: 16px;
+ width: calc(100% - 32px);
+}
+
+dl > dt > h3 {
+ 
+ margin-right: 16px;
+ width: calc(100% - 32px);
+}
+
+.controllers{
+display: flex;
+justify-content: flex-end;
+margin-top: 16px;
+margin-right: 16px;
+}
+.controller-a-btns {
+display: flex;
+align-items: center;
+}
+.controller-a-btns> a {
+ display: block;
+cursor: pointer;
+padding: 12px;
+}
+.controller-a-btns> a.active {
+ font-weight: bold;
+}
+.controller-a-btns> span {
+ margin: 0 16px;
+}
