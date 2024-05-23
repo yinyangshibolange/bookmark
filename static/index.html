@@ -10,342 +10,151 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/vnocss/vno.css">
 
-    <link rel="stylesheet" href="/css/modules/index.css">
-    <title>书签导航1.0</title>
-    <link rel="stylesheet" href="/css/editormd.min.css">
-
-    <script src="/plugins/switch/index.min.js"></script>
-
-    <script src="/js/echarts.min.js"></script>
-
-    <script src="/plugins/nice-select/js/jquery.nice-select.js"></script>
-    <link rel="stylesheet" href="/plugins/nice-select/css/nice-select.css">
-
-    <!-- filepond start -->
-    <link rel="stylesheet" href="/plugins/filepond/dist/filepond.min.css">
-    <script src="/plugins/filepond/dist/filepond.min.js"></script>
-    <script src="/plugins/filepond/filepond.jquery.js"></script>
-    <script src="/plugins/filepond/preview/preview.js"></script>
-    <link rel="stylesheet" href="/plugins/filepond/preview/preview.css">
-    <script src="/plugins/filepond/validate/type.js"></script>
-    <script src="/plugins/filepond/validate/size.js"></script>
-    <!-- filepond end -->
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <title>VS的v干撒</title>
+    <link rel="shortcut icon" href="\uploads\files/teBiQQ5MCkrR6whUhX3l81l6.png">
 </head>
 
 <body><div id="app">
     <section id="container" class="scroll-999">
         <div class="flex justify-between align-center page-title ">
             <h2 class="flex align-center">
-                <a id="leftController" class="left-controller ml-5px">
-                    <i class="iconfont icon-category"></i>
-                </a>
-                <a href="/" class="color-fff ml-16px">书签导航转换器</a>
+<!--                <a id="leftController" class="left-controller ml-5px">-->
+<!--                    <i class="iconfont icon-category"></i>-->
+<!--                </a>-->
+                <a href="/index.html" class="color-fff ml-16px">VS的v干撒</a>
             </h2>
-            <div class="mt-0px mb-0px pd-16px  color-fff ">
 
-                <a href="/manager" class="color-fff font-15px">
-                    <i class="iconfont icon-nav_icon_xitongshezhi color-fff"></i>内容管理
-                </a>
-            </div>
+
+
         </div>
 
 
 
-        <section id="typeForm" class="dialog">
-            <div class="dialog-mask"></div>
-            <div class="dialog-content">
-                <div class="dialog-header">添加分类</div>
-                <div class="dialog-body">
-                     <form action="/api/admin/addCategory" method="post" enctype="multipart/form-data" class="common-form">
-                         <input type="text" name="id" style="display: none">
-                       <div class="common-form-item">
-                           <label for="name">分类名称</label>
-                           <input id="renameOldType" name="name" placeholder="" autocomplete="off"  class="common-input">
-                       </div>
-                       <div class="common-btn-group justify-end">
-                           <button class="submit common-btn primary" type="submit">提交</button>
-                           <a class=" common-btn  dialog-cancel" >取消</a>
-                       </div>
-                   </form>
-                </div>
-            </div>
-        </section>
 
-        <section id="typeFormRename" class="dialog">
-            <div class="dialog-mask"></div>
-            <div class="dialog-content">
-                <div class="dialog-header">导入书签</div>
-                <div class="dialog-body">
-                  <form action="/api/admin/importbookmarks" method="post" enctype="multipart/form-data" class="common-form">
-                      <input type="text" name="id"  value="" style="display: none">
-<!--                    <div class="common-form-item">-->
-<!--                        <label for="title">应用名称</label>-->
-<!--                        <input id="title" name="title" placeholder="请输入应用名称" autocomplete="off"  class="common-input">-->
-<!--                    </div>-->
-<!--                    <div class="common-form-item">-->
-<!--                        <label for="desp">应用描述</label>-->
-<!--                        <input id="desp" name="desp" placeholder="请输入应用描述" autocomplete="off" class="common-input">-->
-<!--                    </div>-->
-                      <div class="common-form-item" style="display: block; position: relative; height: 200px;">
-                          <label for="bookmark" class="mb-12px">书签备份文件（html）</label>
-                          <input id="bookmark" type="file" name="bookmark" placeholder="请上传书签备份文件" autocomplete="off" class="common-input">
-                      </div>
-                      <div class="common-form-item">
-                          <label for="categoryId" >书签分类</label>
-                          <select name="categoryId" id="categoryId"></select>
-                      </div>
-<!--                      <div class="common-form-item">-->
-<!--                          <label for="ishttps">是否为https</label>-->
-<!--                          <input type="checkbox" id="ishttps" name="ishttps" class="dis-none"-->
-<!--                                 value=""-->
-<!--                                 style="display: none">-->
-<!--                          <jelly-switch-->
-<!--                                  id="jellySwitchHttps"-->
-<!--                                  onToggle="handleToggle('ishttps')"></jelly-switch>-->
-<!--                      </div>-->
-
-
-                    <div class="common-btn-group justify-end">
-                        <button class="submit common-btn primary" type="submit">提交</button>
-                        <button class=" common-btn  dialog-cancel" >取消</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="groupForm" class="dialog">
-            <div class="dialog-mask"></div>
-            <div class="dialog-content">
-                <div class="dialog-header">修改分组名称</div>
-                <div class="dialog-body">
-                    <form action="/api/admin/updateGroup" method="post" enctype="multipart/form-data" class="common-form">
-                        <input type="text" name="id" style="display: none">
-                        <div class="common-form-item">
-                            <label for="name">分组名称</label>
-                            <input id="groupName" name="name" placeholder="" autocomplete="off"  class="common-input">
-                        </div>
-
-                        <div class="common-form-item">
-                            <label for="categoryId" >书签分类</label>
-                            <select name="categoryId" id="groupCategoryId"></select>
-                        </div>
-                        <div class="common-btn-group justify-end">
-                            <button class="submit common-btn primary" type="submit">提交</button>
-                            <a class=" common-btn  dialog-cancel" >取消</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-
-
-        <section id="bookmarkForm" class="dialog">
-            <div class="dialog-mask"></div>
-            <div class="dialog-content">
-                <div class="dialog-header">修改分组名称</div>
-                <div class="dialog-body">
-                    <form action="/api/admin/updateGroup" method="post" enctype="multipart/form-data" class="common-form">
-                        <input type="text" name="id" style="display: none">
-                        <div class="common-form-item">
-                            <label for="name">书签名称</label>
-                            <input id="bookmarkName" name="name" placeholder="" autocomplete="off"  class="common-input">
-                        </div>
-
-                        <div class="common-form-item">
-                            <label for="href">跳转链接</label>
-                            <input  name="href" placeholder="" autocomplete="off"  class="common-input">
-                        </div>
-                        <div class="common-form-item" style="display: block; height: 230px">
-                            <label for="icon">图标</label>
-                            <input type="file" id="iconInput"  accept="image/*"  name="icon" placeholder="" autocomplete="off"  class="common-input">
-                        </div>
-
-                        <div class="common-form-item">
-                            <label for="groupId" >书签分组</label>
-                            <select name="groupId" id="formGroupId"></select>
-                        </div>
-                        <div class="common-btn-group justify-end">
-                            <button class="submit common-btn primary" type="submit">提交</button>
-                            <a class=" common-btn  dialog-cancel" >取消</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
 
         <div class="flex h-100per">
-            <section id="typeLeft" class="typeLeft-hidden">
+<!--            <section id="typeLeft" class="typeLeft-hidden">-->
+<!--                <div class="flex justify-end">-->
+<!--                    <a id="exitTypeLeft">-->
+<!--                        <i class="iconfont icon-exit"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="flex justify-center pd-20px">-->
+<!--                    <a href="/index.html">-->
+<!--                        <img src="\uploads\files/teBiQQ5MCkrR6whUhX3l81l6.png" alt="" class="w-200px h-200px" style="object-fit: cover; border-radius: 50%;">-->
+<!--                    </a>-->
+<!--                </div>-->
 
 
-
-                <div class="flex justify-end">
-                    <a id="exitTypeLeft">
-                        <i class="iconfont icon-exit"></i>
-                    </a>
-                </div>
-
-                <div class="custom-nav">
-                    <a href="/" class=" flex justify-center w-100per">
-                        <img src="/images/logo.jpg" alt="" class="w-130px h-130px rd-130px" style="object-fit: cover">
-                    </a>
-                    <a class="add-type flex add-type-top" data-type="" onclick="showCategoryAdd()">+添加分类</a>
-
-                </div>
-                <div class="md-menu">
-                    
-                    <a class="type-item flex " data-type="069cdf4c-174b-47f8-a0aa-956943e31149" href="/?id=069cdf4c-174b-47f8-a0aa-956943e31149">
-                        <span>侧耳1231撒</span>
-                        <i class="iconfont icon-right"></i>
-                    </a>
-                    
-                    <a class="type-item flex " data-type="7f731a76-a620-4704-97c7-a8c99b3ac26c" href="/?id=7f731a76-a620-4704-97c7-a8c99b3ac26c">
-                        <span>的设备</span>
-                        <i class="iconfont icon-right"></i>
-                    </a>
-                    
-                </div>
-            </section>
+<!--                <div class="md-menu">-->
+<!--                    -->
+<!--                    <a class="type-item flex " data-type="069cdf4c-174b-47f8-a0aa-956943e31149" href="/index.html?id=069cdf4c-174b-47f8-a0aa-956943e31149">-->
+<!--                        <span>侧耳1231撒</span>-->
+<!--                        <i class="iconfont icon-right"></i>-->
+<!--                    </a>-->
+<!--                    -->
+<!--                    <a class="type-item flex " data-type="7f731a76-a620-4704-97c7-a8c99b3ac26c" href="/index.html?id=7f731a76-a620-4704-97c7-a8c99b3ac26c">-->
+<!--                        <span>的设备</span>-->
+<!--                        <i class="iconfont icon-right"></i>-->
+<!--                    </a>-->
+<!--                    -->
+<!--                </div>-->
+<!--            </section>-->
             <section id="editRight">
                 <div class="dashboard">
-<!--                    <div class="dashboard-title">欢迎来到文档管理系统！</div>-->
-                    <div class="">
-
-                        <div class="common-btn-group">
-                            
-                        </div>
-                        <div class="mt-16px">
-                            <a class="common-btn flex primary" data-type="" onclick="groupAddShow()">+新增书签分组</a>
-                            <a class="common-btn flex primary" data-type="" onclick="showBookmarkImport()">+导入书签</a>
-                        </div>
+                    <div class="content-search flex align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M10 4a6 6 0 1 0 0 12a6 6 0 0 0 0-12m-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10"/></svg>
+                        <input id="searchInput" placeholder="请输入关键词">
                     </div>
 
+                    <div id="layout-lay" class="layout-controllers">
+                        <a data-type="list" class="active">列表</a>
+                        <a data-type="len">定长</a>
+                        <a data-type="auto">自适应</a>
+                    </div>
 
-
-
+                    <div id="itemWidthInput" style="display: none">
+                        <a>100</a>
+                        <a>150</a>
+                        <a>200</a>
+                        <a>300</a>
+                    </div>
+                    <div id="layout-wrap" class="layout-controllers mt-16px">
+                        <a data-type="nowrap" class="active">不换行</a>
+                        <a data-type="wrap" class="">换行</a>
+                    </div>
                     <div id="appsContainer">
 
                         
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>书签栏1</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('405019ac-7fa6-49b4-a514-79949f559c45')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('405019ac-7fa6-49b4-a514-79949f559c45', '书签栏1')"> 名称修改</a>
-                                        <a onclick="deleteGroup('405019ac-7fa6-49b4-a514-79949f559c45')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://ark.intel.com/content/www/cn/zh/ark/products/series/77504/intel-celeron-processor-j-series.html" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABk0lEQVQ4jd2Sv0tVcRjGP+/3fD3Hk91AwYgKC3LyH3AUWsTEhLLGUAlMoilw0cEGt3JoCkJwcEoKRT1Di7UJ0hghDl1BQisFxXu993rO+zpcwUsQQtHSM77v83ng/QH/ucbH3dmme28CniRRTUV+b7bTXlcSAeJoarhJanM1oFWDP4cMJ88YnL98Ckq1N7zYyDX7wMPkiieTL3ibZHD+PA0bFQ5aLpLGu9xoO2Rr4zGhXwVZ5PZUjuutl3jZsU4WKVJuxTsvDC31An042UJ8N5pug15FgrtY9haTr2g2ShBMEMZGpbiJlseQ+hXEdTjgHCLNGE1ousnOwS2Qn6gNYPxAGcEFT0FCyoUEpAeJHwB7qAUOMcMkxTREdY3Z+4cg+ZPgALHG6vwaY+aAGYRVxC6QqjmQI8SKQBGR7GSRitk3zJYQ9xx1LzApEeV6MWK07hMmZXyUenYKC+Si9xzVK2xXcRcPUcqnTA+UePTuFa/vfKd/uRPvW9gt5JntrtC/3M70x/2z/+TX+/+BauC/C/o3OgZxmJg+JDr0kQAAAABJRU5ErkJggg==" alt="">
                                                     <p>英特尔® 赛扬® 处理器 J 系列</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://ark.intel.com/content/www/cn/zh/ark/products/series/77504/intel-celeron-processor-j-series.html" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('b9e89d5d-38d7-43da-bf10-0ddb07c9c469', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('b9e89d5d-38d7-43da-bf10-0ddb07c9c469')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://baijiahao.baidu.com/s?id=1784994881662968888&wfr=spider&for=pc" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADCklEQVQ4jXWTTWhUdxTFz/3/33w2CdNMQkMaqfmAGqziIiRtESutkqKgmEUJootSKF0I4kK3ChoUa6ltLWiRbrqsUlsrWlMVP6K2BCtBtDZ+JdFM6ryYmHHezHsv754uEo2bXjhwuPdyFgd+INlNMkcympFyRqTqnOfsZu6POZLdIOnOniKSOjEZ6ZZted25x6WqMjcW8tNNYzxwcEJnMl+EkKSLWRP5gep0RN23/4lW1d1hdt4d9l3x+MXX40xnB1nffI/nL3o6Pa0ahnMhBoCSkHhMxBrI4N1AMhnLRELwKBfCdSNkaywI4fBIKNaKOA6EhABQo6pGhPLTLwUc/fkZutZWUEQlU2XR0ZZCR3sKnqdoabayZHGCh76fRP81HyIUVTUgqRf7PK1ruqfVDXf15OkCb94q88FQ8KK6a9dLfJwPuXOPSyczqG8vH9G8GypJNQDk+kBZrIFUVYqcu1BC64IEnhUVm7fmsb3HRUtTDLU1FuculNDc6EhuLJTb/wQCQBySaG9LIpEAxp8o3luawtBwgM41oyiVCWuBP/t9HP+xHu1tSXz5zQSWvpNC64I4lAqJoojGCK78UYYfEIsWxrG6axRNjTEYI+i7WkLgEx91VaBnRxanz5SwZHEc89+IQRUQVaUqYa3B8EiI9R+PYWg4xA+HX8NfAz6+/W4Kla8YeCXFyg/S2L+3Fo4VRJHCGIEhhdYa/n074IrVo1z1YRqXfm/AorcSKEwRh76qRUWFYN/uGjwYCrFq3SgLBaUxhoDQqKoAlAMHJyWdhmz6LMNlnQ9x7HgRmVcNkklB3lWEIfB6XYyXLnvSe7YoIpQoUjHGGAUArww+nSLv3w9l765arnw/Bb9MKIHPe7J4tyNJpYq1loUCCQggojIdkdZAfz1ZlI2f/IuGBgdda9JiLXCq10MsZtC5IgXPI44cK9IY4MTRejTOj5GEEZIugCyg6D1b5onfiggDoKXZkdY34/B9YuCGj4ePIlZXW2zorsTCVkcAAwDjeI7zDI0vo/t/o8/JzZHs/g8akjdG32H2lQAAAABJRU5ErkJggg==" alt="">
                                                     <p>前端流程图框架11个：开发组态图、思维导图、拓扑图必备</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://baijiahao.baidu.com/s?id=1784994881662968888&wfr=spider&for=pc" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('9bca33c4-50dc-4043-98fb-78b5e22f03c4', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('9bca33c4-50dc-4043-98fb-78b5e22f03c4')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://theme.typora.io/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACWUlEQVQ4jaVTPU8bQRSc9+5jD6MYUUZOGjeQBhAFyq+gtAu3UX4Af4NI1FSICIkoRRoqSuMKUSCoKKxwEYpJZJ9jG13uvLe7L43vJIpIkTLSaldvNLuzb/SA/wSVh8PDw6DT6bSUUk1mfsY75yqBMebr2dnZ51arpaviyclJXWvdk3+EMaZ7d3f3otR74/H404LTi/U3VHyapu8AwO/3+2+VUm0A1jnnFUXBp6enMh6PEUURACDPc6yurqLT6fi+7xfM7Jj5JQDw0tLSa8/zRESYmWk2m8nR0RE1Gg3q9Xp0cXFBjUaDjo+PaTKZgJkJAC12+FrriTFGwjAk55wwM+/v72NnZwdxHMM5h3a7jWazCWYmay08z6OysZym6SOAOQAqioKWl5extbUFay2yLEOe57DWYnNzE/V6XYwxz2Lk6XT6KCI5EYGIxDmHLMtQRikiYGZkWQZrbSWsHFxeXj6JSCIiEBFxzkFEQESIoghRFIGI4JyDtbayXl2wt7eXW2t/lEURkSAIMBwOcXNzg9vbW4xGI4RhiEWUACDVFwCI1vonEcnCAQVBgIeHB6yvr2NtbU3iOBallCxeFQBVL3wASNN0AIA8z3NEJMYYbGxsYHt7mwCQMcZqrUUp5YgIADhJkrh0gCRJurPZDPP5PHTOgZnJGEN5nsMYA9/3vVqt5kdRFCqlwvv7++75+fkXAFQOk3d1dfVhZWXlPTOHAIyI5AB+ichQREYAHpl5OJ1Ov+3u7n4cDAa/n00jAHS73Te1Wu1VURSjfr///fr6+ung4EADsPgL/gCc7K9iTt5DIwAAAABJRU5ErkJggg==" alt="">
                                                     <p>Themes Gallery — Typora</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://theme.typora.io/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('a73b7675-9184-43bf-b7ee-0d72cac234f6', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('a73b7675-9184-43bf-b7ee-0d72cac234f6')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://pqina.nl/filepond/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAACdklEQVQ4jSWSMY9UVRiG3+875547M3dmWNnB3VnCGiFmE4KFGrGCwlhobSysNGIHQTqtbNYNpYHCRBMS4x+wNlY0GiggwQQQBaOrWXTdnVlnZu/ce8/5Xov5AU+ePMkjZgYAAEkDROSPetp3ftm3QQDcs7h5sH3Kty72hgC8iBAQ0gCvCuBBM9uruJY1TvBS6Dxqymv/7axn+bvFsYFmYmayUIj8WlXXRvs/VrNdxlKiKofevdXuNYwv+PaF7ooCQnI/xq29nVdCb2t39DhVuZdGCGVQBrVDaT4ojl5/5jkDQXojO6pnQvHJX6MxrMhCT/V80Tru3b1mfrs+XIJ+NRmd9PmV/moCvJEt1bLO/qmlnfuN4G8MBxt5mJt1nF4fjzbH//bAbybj94rBkjp1Ion8dr8k1UE/P7a86v2bv/x5+uGTr/cPLi8dPZ8XtbntOt6tShFREZkkPq2YTE/68FqRf/H3wfejcrfi1s5ebfZGqxNNq6TbTSTpSdbGKgpNAxQikwaIzhTOnACgwJRUAgBUgK5qT5xL+ri0J2Vzcdh/tWivumxzbZCpfjedaxJvesJlIuIT0PE4W4Q70zipcWl7cmP9yA8vDiMZVD57Or45rdVkPeQvt9skJZmpyINpPHf34BCmOdda8novdBxuldVPVZ2DoxS/PLF8YdBPC+Cjh9Nng57u+vfvT2diIWPtDMJMKWSCfbzW3Ty+tGjwgCgwS3x7JV8NevX38takmSVRtSMZznTdhyuddwYdkouDFtcJACNVBMDP0/jb3ILi5njuBJ8+309GAVUVgCcFQhACSaQKNrpuo+sAccJHhzGRAooISQD/A5FeSdmGVx/ZAAAAAElFTkSuQmCC" alt="">
                                                     <p>Easy File Uploading With JavaScript | FilePond</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://pqina.nl/filepond/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('17bb132e-e119-4e3a-974f-b6428d41bb1a', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('17bb132e-e119-4e3a-974f-b6428d41bb1a')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://ainas.cc:5001/fsdownload/hU0Oj1sKm/%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>黑群晖工具集合</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://ainas.cc:5001/fsdownload/hU0Oj1sKm/%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('ed97435e-af71-4aba-a52f-53731383485c', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('ed97435e-af71-4aba-a52f-53731383485c')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="http://www.htmleaf.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMklEQVQ4jWPUUvAyYGRkmsfA+N+QgTSw//+//0XMYoLq28jQzMDAwKDIyMiozkSmZhhwZCJFtZOrBUNAsAuKGAsuxabmugymFroMDAwMDNLS4gxSMmIMpua6DM+evGLYsHYPbgN4+bgZWrsKGZxcLbAaLCUjhsLH8AKy5hvX7zFMm7SMIS+jBS7/+dNX3F6QlhGHa+5smc3w+dNXBv9gZ4asvCi4mn27T+A2QEoa4ryasgkMpua6DP7BziiKP3/6yjBt0jLcBsBATKIfg4amEobmxKhKhqdPXqKIw8OAl4+bYdKMGobF8zcy3Lx2H0Xj4vkbGdzskxhuXL+HYRmjtpL3fxgnINgFJYqIASgGkANISolYDfjPwHCfsDIc4D/jeSaGf/+DyDHkPwPD/f///yUBAPTAXSACf3nBAAAAAElFTkSuQmCC" alt="">
                                                     <p>jQuery之家-自由分享jQuery、html5、css3的插件库</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="http://www.htmleaf.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('c1ae309c-eafa-493b-ab3d-b3c58fcb9a46', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('c1ae309c-eafa-493b-ab3d-b3c58fcb9a46')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://prisma.yoga/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACyklEQVQ4jY2SaUiUURSG33O/r6m0nLIoM0otUzNtG2yDFsGCMqEMW6H8UbT9K4I2YoaKiohEo6JAQwrRNttogaQF01BLjWzBoEJBC5dZ1Jn5vntPP4aRsiG6vy6Xc9/3Oe85QIjDzMQM6vV6T7r7vI/Z50sOvoeqH/hZAABL784j+Vc4LWcX/+zsvs1sF/8lAIC4ryu2orq+JcyWKUfNyfLnFd8w2NudEYpChHBnDBmx72RR2Xi/z6duFhzFy5p3eqvT2PxPW7vdHkDvcWaeL71nYOI8MzFzi1SseO+Jc/LU5ZIednUsGEjxJ0FbQ/jnH84jZwrLdFh0To6bAALx1pws9erN+7BePXw9ADgc+DOL/uAM36EdR/MZiYsNJC1RjvPFipkVM/O2g6fVxZLyDnZ3pvxOIZiZiEixuzPlzovaPYWl95XVahUEwSnxsUEn3rZ+pXxaVR+JYSM3BsPub4HtEC4acvh00Y1IU5lKKklWazilJkxiAKQUc1pqkm4ZpPG1u09yubt9MhEpABBExDjQu7rg6q21la9rzYiICNHn9fPEqDEUEz2WArRMADh3zXL54EXNOAyP3BRsPRCiZeiUxs9fCQBrBJKGH8nxsWwZpENKSUIQpJRInzuLDMPk8oqqXP75PZqIVEDA57y+PWdF63BrhG5KqaAYs5OnwJQSUiomItI0jTQhtDXLFhol95/FIjIqGwB0ZhZE9IX9Pcf25K674Mi7xIPDw4RtWgLrmkbQNHJ5es3KukaqrH+vNTY1WxbNtUEJzexPMjBGB7rde28u3bp/1dumj8bL4jz69LVFq2v4QG1OD8ZZhyEmZrwzY76tekZS3CNAnCMiMyhARMTsaUt9+OZ7xe7jBaNnJkxCfPQYM2Vq/LfFadOfx0SNeg1nezUampsoPd38a5WDi8HM2W1drmddbs9Z9nk2cEfzhBC1WvD+CzceczOX+ZqWAAAAAElFTkSuQmCC" alt="">
                                                     <p>Prisma 官方中文文档 - 下一代Node.js、TypeScript、Go 的数据库 ORM</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://prisma.yoga/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('3a24f600-14ef-4f9f-813d-d6227514d459', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('3a24f600-14ef-4f9f-813d-d6227514d459')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://blog.51cto.com/u_16175487/7672302" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACxklEQVQ4jU2Sz2vcZRDGP8+873c3yW5208amWkOkVGpRROsvKFYE8eLFQw8VShH1oOZgD6KICEL/AQ+ihwpSTx6Kokiv/sJ/oKUohlZQYlMbjE1rdpvd/b4zHnZbHHiYOcw8D/PM6MJDTx5RSh/Wpb7LpSDCAAIEgDRGRCglcHdzV075Sl3KCZ07+NTVJBZGkisnhQcCPEIyI+p6zGMW3utjM9NgKapSWwnWs5sWRv3tcs/Jd61z6AliOIScFeFY1eDPDz7i7y++Bklzhw/F0vvvUP+zqUtvvFViOFzIRDi4Ne/eQ3Nxj4IgtodRRkOl6Wms2aC5tMjuY0dj1/Gjyu02g7W/QpJF4BkwzPBSE+70f1mJlZdfl81M4/0ByokHzp6hMb9TQIS7fDiUj/1RhghJWFUhiTDpztdeofPYIwxWV7nyyWf8/t5JZh9/lN0vHpNVGZmFAU6QAwkJm2qCROv+A0zvv5eUM+2HH0TNJivHX6V3/mfmjzxPY8ccuCskQBjuKGfqXp/Rxgb9lYv8+sJL3PxjlSiFqX17aS4tjgXcuX3aSWQkIoJLy2+iZMRohKoG1DWYoaoiAEpB/xu8TRClYK0Wi2+fwJpNyo0brJ06PRESRIwxEQLGeVJnQYhg7pmnqbod1f9usXbqNF7KpHGsFLcIATMLTQiNqtLo2qa2zl9Q1DUxGERjYRfjtw18MBivBeAeUQpe1/IIIckMnOJx/dsfQjlT3TGv+z79OKb37UXJuP79T/hWD8s51G5JKZE6s2FSiPAc7pZn22Xjy28shnXsfO5Zpg7s1/Dib2x+9yPrn58htVrU2wNd++psWLtNvbFBuDso6dzBw1eTtDCK8HqrJ8uJ1O1SbvZVen1Su33LzPBeb+KnYqrdsoLWLXksC102oOp23GZm8H4fS5lqbg6Zbl8kd7tUO+a80ZlFssvJffk/1cpYlw4f2WUAAAAASUVORK5CYII=" alt="">
                                                     <p>docker镜像太大 怎么解决_mob649e816138f5的技术博客_51CTO博客</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://blog.51cto.com/u_16175487/7672302" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('a0c4a638-7977-46ba-89c5-3c8f461e8da3', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('a0c4a638-7977-46ba-89c5-3c8f461e8da3')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="\uploads\files/rM4_6lNV39N01XVu2PjRFRc4.jpg" alt="">
                                                     <p>厕所</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('1fcf3238-4072-4958-a297-afbd3483c7c3', '405019ac-7fa6-49b4-a514-79949f559c45')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('1fcf3238-4072-4958-a297-afbd3483c7c3')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -353,85 +162,50 @@
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>工具软件</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('0396b281-4519-4936-8e71-57b251c74064')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('0396b281-4519-4936-8e71-57b251c74064', '工具软件')"> 名称修改</a>
-                                        <a onclick="deleteGroup('0396b281-4519-4936-8e71-57b251c74064')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://api.aa1.cn/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACYklEQVQ4jX2TzWtVVxTFf2ufc29i34MkpFRi0IhtIyVoC5FSHAgtnejAkZOIioNi6R/RkRP/Be2k0EGgwwoKtjPBQUSwBUfiJ2hTP4IQfb533zlnd3BvakVwDc5k77NYe+21xRsEoADi/XDAgMxW86fxjx9ROAxN0xYd2ds8XnyrvUBd4/ny7fTt2QhnKlc6EYiLRS2nEPjbBJLjnQC5yEqzcOZc7OqbRcPsjItAbsj9XeEyHMfd3QSbtHJXHGFyBcBKcUvDYoAJmSQTMoQ1w2RpXExSEG6w4gar6pTjpShMmKY/6+OpKKekZjhWbpJKduYPzqo3VyunAhKwKoNlnCIFMUoNi8fnOfnn15ra26Oaisx9NUNvxzaa1Gjp5E5m90+RSkZBgmUitEN7cYIC84dmeXT1GbuPbOfv6xsc/vkAj9Y2uH9xnRf3BoRKnSWtSS2BwXiU+HDfFDu/+YhX/wzZc3SOl+uveXztObd+ecDS8d2UUWawMaTgqB0c23ozhZm9fR5eecLl09fZfDhgeqHP9GKfpVML/PXTXQZPR7x+2iCEd2sSnK8+qRfW5HxRNCpljNydMY0+/+5jti/PcOmHNbYx6XW/ooyzq9SGuHm7efBlhBvgu7x1VR4qIUkhm9/5dZ37vz2hH3tYBXmYHeGSumjeIMKKw6gARW3OcS8oQBokxi/BKuEZZHJw7377mxyIvrw2iFHEICqT1xbChMVqwuS1icpEDBAjXptLPVhVhAvZ/djvUpqUM3SKISGc/8e5k4ZQkdKkebgCF9J/F7OD8x/U1OW9h9yhobHHfD8A+Bfvvg6T4LeF0QAAAABJRU5ErkJggg==" alt="">
                                                     <p>免费API - 提供免费接口调用平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://api.aa1.cn/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('6f16daf5-30d1-4544-866f-641206354554', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('6f16daf5-30d1-4544-866f-641206354554')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://pd.zwc365.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>文件加速下载服务-免费</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://pd.zwc365.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('71799f75-02fe-4e82-8f3d-2d552f4e9379', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('71799f75-02fe-4e82-8f3d-2d552f4e9379')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://doc.embedfire.com/openwrt/user_manal/zh/latest/User_Manual/openwrt/docker.html" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABuUlEQVQ4jZ2TvWtTURjGf+fcJDfNSWvahNioUFHSFis6aKaC1NZB0EWEQicRxamD/gERoWM/wDFjoUUncVeH4lihiuKgNBCIFbEmV8xHc5Pe4yCcmNgbxXd8n/f58bzn5YiT2fy8FCwAMbpKALq72S7H02SlnxlACBhNBv0AMSlYkH5mAE/D5QnlnwFispcKcHE0QiJq+eo9AXElGTsc4uwx+/8Ad6cHCViCuPJPEDioaQm4NzPI7Ll+AErV/X8HRG3B0vUk02MRAGqux2Zhz+iJqMVupQ3sWCGuJGs3U8astWblRZnvdc/MzE91Hs0AAhIeziY5lbKNefFZmY0PNTMcsn5dJdYn/wRcGldkRsJG2P7aZONjjduTh0wvczzM8ICFstsA8wYX0n0d0YpOi6l0hJlxxdM3FUIBwYMrCRotTbXRXsmgnryucC23Q+FbE4AzR22KToshJXl06wirN1KMxIO823Fx6gcAXhX2eP/Z5c76F/K7LkPKYu58P483f1Cq7qM11Jsey89LHUlF+n6+TNd/iIQEc5kBrp5WnEgEqTQ8tooNci8d3n5yfx91RK/v/JdyPE32J66vg4QRTw0yAAAAAElFTkSuQmCC" alt="">
                                                     <p>10. 基于Docker的功能拓展 — [野火]OpenWrt用户手册—基于LubanCat-RK系列板卡 文档</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://doc.embedfire.com/openwrt/user_manal/zh/latest/User_Manual/openwrt/docker.html" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('9f883b5f-21c9-4920-be0b-9ead50581100', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('9f883b5f-21c9-4920-be0b-9ead50581100')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://hub.daocloud.io/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuUlEQVQ4jW2T20tUURSHv73PGfXMaE1GL9lNMy/dgwpTi+yCXZEg6KXESgqCHoKKitCysuwPiAiCKIqCIKIyQShRyqKgCLLUSQuzUmd6GLVzPOfM2T1MTmWtx7X5fXut31pLLCkqmYOQV4DFjAmlFABCiLFPAC9RXoUuhLyoxoiVUti2/RcgKSlpLGixEPKirqB4NON5Hp7nYaSksGDeXMo2rQfg7v2HvHvfjmlZSCmRUsY/gmJ9VGyNjJAWCIAQ5GTPpO5MNRPT0wEoXLaUg0eq6Ah9AKUYHB4mJTk5Xt2S4tXKdhyWFxawb89uUlMD3Lp9h7Z37axauQKAR03NzM7PZdvWLQwNDXPh0mVanj4jyedDAti2TVFhAfl5OUydkkFlxQ78foOa2jpqauvw+w0qK3YwdUoG+Xk5FBUWYNs2QBwgEHR0hgAIR76zfddemp+0EgwGCQaDND9pZfuuvYQj3wHo6AwhiBuqA/gNg/qGRtICAco2b8A0LXQtYQ+6pmOaFtFolGvXb1Lf0IjfMADQMqZlnXBdl+yZWYwfP47rN28zODRELBZLjE0IgaZrtD5/QXBCEMdxGQiH0TQt3oJS4DgOVUcPUbmzHNeNYVkjKKVQSmFZI7hujMqd5VQdPYTjOPxakXgLmiYJRyJ86+undE0Jd+7e44dp8ur1GwAWLZyP3zAoXVPCt75+wpEImib/BGhEo4NUnzpL1bHDpKWmsn/fHrq7PwGQmTmdK1dv0PvlKzW154lGB/H5fL/3YNSsH6ZJVuYMNCk5d7qa3FnZALR3hjhy/CQxz6Or+2PCwEQFo+E3DHp6PuM4Lo+bWhKAx00tdIa68Pn0v8S/KljVD2LSn0mlFI7rsnHdWgAeNDTi0/X/XKUa0CZPz+oRsAwYl6AKgZSSt23vae8IkfzvJQL0KiEO/ARhdwxyskj8cgAAAABJRU5ErkJggg==" alt="">
                                                     <p>Hub · DaoCloud</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://hub.daocloud.io/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('65aa0be8-a7c6-4b1a-865a-d172d330b160', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('65aa0be8-a7c6-4b1a-865a-d172d330b160')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://dockerproxy.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC2UlEQVQ4jZ2TT2xUZRTFz/3+vDdvhvYNnXaASgpiXBBaMCyQxA0rFyYmGGJctSv+bFxUE0KMm2dM2DQMLhpXJpW6UxYuTEzYQAxho8GY2siCYDECCVA6086bmfe977vXRfnTRN1wdjf33LM5vwtsVSZqy0RoLY+gtTwCgP7HA/NikSlkxOncb6+aWnRSg45B+BVFBP7y1r0AueZz91XnLP256c0YL5KFAJLGF7/P6KQyp0zUFO/AoUSnYKRJBGVjiHcPQ39wdnV2cvHZjQIyBZA05pemdTW5JN41i27H9ft5SMD86ZER3gYXXLftVHBNXU0uNeaXpgESIFMEAPWLf+y1MW4qUKrFcz02ehAC6rHBmUMNtH55hMeDgMKHUI1jpQidQVsOtz/Zv6IAQFs+ZSu17Wv5wFtN+tybYzh9sIETrw9TvwzUKwNyF3BsYkj70vkNxNv1EE4BgAYyNfzuwc+7Zdh9fF+N3mgmlJeMrvM0YBEhwnjN0FQzwWdv7cCjXiBrNHWL0m78MLqg0Hq7TiLjHDzqsaaxxIAIMFqJIZBnptGalWaiyTFk4Z0JfWYqRc+F8eHW+3UzjBRFYOysWswcqGPXtgheAE2AiEAEEAAVq2RnzdDJH//iy3d6ZBXhMdow6+vftZtjH9xvlzRRMUr2pJGCMED0tGUBRAik8O2tNfl6+YmMpkMkobyPj6+0FbKMrcLVAQxd+PlhgAhAz2CTzRBSuP53Lud+eoA0MkEZSxJwFcj4aY2/7q1Ukptdx+l7r9X49KGG3lePoAlY6ZT4/nYHC0tPUHgOcRQphnTKAofbH+1foU2QMm7ML03bqLq4nvcREbtGYjQBtDbw6HqWIauD1joSEyOUvZnVD6e+eQ7SVpSjajLH2jZLVwDsYYhgjAHrCPzfKAMACbJMrc5OLvY63aNc5Octwg0DuQvhu977G2Wxcb5Yz4+uzk4uItvEH//SS7zzPxevZEY9o2QsAAAAAElFTkSuQmCC" alt="">
                                                     <p>Docker Proxy 镜像加速</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://dockerproxy.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('83fb98b5-970d-4151-970c-97763dda8059', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('83fb98b5-970d-4151-970c-97763dda8059')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>阿布v</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('529b7404-85b3-4d06-aace-a1f4b052a50b', '0396b281-4519-4936-8e71-57b251c74064')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('529b7404-85b3-4d06-aace-a1f4b052a50b')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -439,97 +213,57 @@
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>收藏栏</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('6d206705-e887-49ec-9d23-c61455e2dfdc')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('6d206705-e887-49ec-9d23-c61455e2dfdc', '收藏栏')"> 名称修改</a>
-                                        <a onclick="deleteGroup('6d206705-e887-49ec-9d23-c61455e2dfdc')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="http://study.163.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDklEQVQ4je2PoVJCYRCFv3MFuRAMjAFnDFdxnB8uvgfBQKRQLGafwWLyFdTgjMXiA1htJkGCOA7R7vij8q+BwUHnEiB7yu6c3fPNrpgjS5L4M19yFuSCqGHmhBzggPN40D0EyNlmWvbF0FCQQ6phOMCNICFMYDIAzfIr00a+mr4BpXmXzJEHXoFetEQYjD5wAzSjhcMAYmjSNcBygBn9A5YDeJndLQr4Mqlj4/FWPOgWC8+9k+kgNym6h3BrFj2a6IuwK3Q2XRJ04qeHqyyyRtX0wqAFvMz4a0ACgHGE2ACaf7LrQEVWr6/6kdoyyj/UyPbMdIBxWgj5Y7/y0cr+TMNM22839t930svs0G99A0LWUBqvzoJwAAAAAElFTkSuQmCC" alt="">
                                                     <p>网易云课堂 - 领先的实用技能学习平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="http://study.163.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('dff63b20-a036-4fde-8545-9e73e9e1235f', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('dff63b20-a036-4fde-8545-9e73e9e1235f')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://ipcrs.pbccrc.org.cn/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>个人信用信息服务平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://ipcrs.pbccrc.org.cn/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('2cec82ca-92cd-40f7-860b-65753e24e185', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('2cec82ca-92cd-40f7-860b-65753e24e185')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://www.tapd.cn/my_worktable/?from=left_tree_cloud_v2#&filter_close=true" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACr0lEQVQ4jT2RTWucZRSGr/t53nfSTDKTj0ah1CQ0JSULUxohZNOWrupC3JTauhZ/QFwIEgV1IdqduvEfKNRFxJ2Luih+JC1NcSONibE2QYbYDzIk02Zm3ud28Y5dHDirw3VdR75w4Uiq199N9iLSSEJUfKgP6m/zae0SNSeQgOBkADDsJfFF6xHXsm69/l4IYSnYeYFS7q6acci/HJlVRHQLcZhEt4C+DPIcA8MBlqqjdDOkRew8SclI6rZ1VzOsdMcxMDQIUy/CwhQaPwqf/wCNJinPyIN5JxPUk20/eyYUYbDfjRMLvDnbr7MTiVdOwORRMTJQ8t9cF9+toUrEFqOZU8IxSufOEU6fJk1N8dpLJ7k61BNGpTUCYPY4Wr7D/zGc9VbixYtmfl4CBgFsuikQBJu78NMG/LYNN+/h/goklxczYpQPWqTNTcX5eZ62Omw3M8YGKbEFX6+Ij5chRMgjyrMSSkIZCZRHWF2hfdhlqXGe6w8n+fJq4tI84MDLx6FW7X3TUCQIoSQPjl2S+gkb62xdv8Hy+gD/7MLtLZCFBHOT8EIN2p1eDYF7iUK4cgtNN1CAn4cW+HdgjEqeWHsg9g/LcMeGYeYYdIpeSvVogBCnd51dXqV4/Z5/HJnxYddk0aw3zM5jY0O1AnMTUJTelrENNg6pHQmVgr+npVv90+pzIovwcF/c3S6lk82ZSRjogyIhQM8VEMKYTu6iqLjViZjI07ZZu5+QIAjOn8LjI7hdYOn5EER6AtLU0AZfnX2LN05+T62yBw7c2Qo82hc7j+HG7wihUD7CCsimKf/K+wR9COTIpCJ68a8rfPPnZVVbc5waneD+bqTRLL0VMBCATkp8Ej96lVXqYHTGDn0HjnzbrtEa/kPV4ds82N9h76BK6oyhUl/AkwTXWvDZfzALMF2Qck7wAAAAAElFTkSuQmCC" alt="">
                                                     <p>我的工作台 - TAPD平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://www.tapd.cn/my_worktable/?from=left_tree_cloud_v2#&filter_close=true" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('a1c3ffb0-1436-4a11-8d37-beb524a1f151', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('a1c3ffb0-1436-4a11-8d37-beb524a1f151')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://vueup.github.io/vue-quill/api/methods.html" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACb0lEQVQ4jY2SP4hUVxSHv3PfnZk3b9ZdUTAgErIhNpvCQlJJIJWl3RLFwGyKYGqJJgpLXhAXEVKJhJjgrKCCWASrNBaSQhSMsYhgIcSEkELiZpl5M/Peu3+OxbqrGU3wgwP3HM7v3PvjXFnoaeoaNFlZAbawwUa+spY/YYItNAbUlqT+pRmSrdruRFxpCKh40E4b/Bh8iniFacBHI16MetTEEaThsUWS29lM0vXDBAmAXwtxz884EA+xBjcqQQLNRkbpBtds0PHR4p92gQsZAcRHwQEuQjDgQsSj4tVLYBuRfYlpUdeDP4snekQmnf0fC0f7pxum85nxSDkcHLrwzeZzFlTyHHm0vTxoJd3pV8sgw2i0jLGlU7bs92/NvjH94+/V+D2jHAbBucHdX8NMD1Ts/Dwmz4ndb2Uq7bDoqxQBJIFYgPGyJ88lLhzrn0oanSRWdSQmn/98ThyosVevEkFUtZythlr5URW0jNLyWauu+0u972ZuLiwO9luTfkAQYnQ/nD+z6TqoAYkC8FFv/H5q058YQhhUJHUSQ1H/URfZrlb7b9V2drdh2m+HcVkG53cvfz39AFRA1AAYk8xBfOjd+J5qfGQb1gTRxUtnpB83ZYcbzewdEBOiP/tMbEAUYGMLc/P3m9venYtvUe5A/PHlL6c+3Z+vvpnZ5r1Esik/Gv1VhWzX5VOsrov/NeBVdJeKi03bOUgV8OPqk95S5/t17+s95iVVvmare7rca23rQyLR+/LOb81s+Znv+GL7ywM2nuaNmMSCmqh8cSMXD1+97sdTAeieLK58fKK48mJtEvsf9yvArOscyCdqkzwFW/swmQ2B0sMAAAAASUVORK5CYII=" alt="">
                                                     <p>Methods | VueQuill</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://vueup.github.io/vue-quill/api/methods.html" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('13f631c7-3938-4cd2-bcf5-bd922333ae64', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('13f631c7-3938-4cd2-bcf5-bd922333ae64')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://element.eleme.cn/#/zh-CN/component/installation" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAClklEQVQ4jX2TTYiVZRiGr+c7Zzwz4xn7o5/RJKFoEQRNP7RwRiSyRQylCM7CFKlNixbBUC3ciBEjQ9gpCkyYoDLczGJMnWlKxKFpE/2M0SJE0HTUStPKms6Z833v1eKYmWEXPJsXnpsH3vuCyxhsMRMyAGpu7Nvj931jHqfmRgAhY4sZGPyL1mLrcasPL3vfiW2Hdd7WDB3WO3Y5zpAPXQqKVtCVvOjijhHffPqQzVO5mnJrMxa1GQvNnc31mSnnF474Gs+5+PLVANUR1z426ez0edXCgydt9o6aFu1oTe+o6dNTNrVw8id9dMLZrhHXAAQrra4a5Ls9/Sz5+XfmX/qMtokTsCCDatnIAi7m4Q9/wGAPvNrbiDkqrN7HiU82c0+ZEpXuim0d4MBElGfOGd0LwyRRGPzWhFIQL9yPgz3GXF5JnSXjtgrtdEclo51UEOZGANzQjkmCwEYh994kH/bj8HLi8x9xYBwaRkhIGTM6CSQiIELyorXcLIhqW7C3P1i2iFj3ET6xl7jzeqlkUEhwHZS5BkmotsFb38DwV3BrJ0ythRVLUpYs/f3pZMwhgQrJoFxCJCplPFvHoS/l+R78dj1x38247YtSagglkF8ho06WYZRJlAIu/ElkWSskJA6sDjY/SOw+gne9S3xwBDoiERjkREZB40w98ouRMfq4+cDdkX6pw4UGdlcRpH8frp+ER5aGB9aYz0XGmXrUOUcdgK53fHLlfo9+fFY1OX3a5opR0407TV07TD27TdOnW0WaOq+rrijSPzzrLQvednjDQevH51VzX5+xeONSlU82ddMh5ys73f6fKl8l0wO3v+f+l7/WRmrJ9MqMLt3lOFv/T6ardd7uur4xjy0f8xg1n7qWzn8B+yieXRI8OTwAAAAASUVORK5CYII=" alt="">
                                                     <p>组件 | Element</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://element.eleme.cn/#/zh-CN/component/installation" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('bf1372df-171e-4e29-b99e-a05462718bdc', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('bf1372df-171e-4e29-b99e-a05462718bdc')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://www.zhimawork.com/index.php" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEklEQVQ4jX2TMWtUQRSFvzNvdhOyJrqBSEAxRLELKGn8ATZWgp3iPxCxs9XCf2BhaxDin/AHiIUgARGMxkaTQNAkbnaT3ffeHIv3XnZRcGC4U8y999x7ztHy2pcTRCZhG0n899jQ/MWUESnYjpKMwHZdQoDrOFEAGwvbkuQoDEEeJduGdtYkjBMlVa0BrKqDhGQiEsmm287IgjjKS5IhUWGECu8YwUQ0hCCrNyz18uai3ty+qB+9kfqjQsGWExLIKUlUb6m+9Tvr3nn0xBCyAN97OasL05oKga1eTjs2S5vYg9QMJ4kUks1MDLzYOOD5xgFPbyxwa6nDfr9AZjz7KQuux6hikEQyLHZaZJlYWd9iu1/w/t4y52danJQm1J2rXVQLtSsk8R+e6/qaIDOGKtk1Q0YUZY3ANkGwM8gpSvPx/hUudCKrr7+xd5wTM7Hdz9kZFOzWd39YVg0MMUgMisSDlS5LZyLP3u3x4eeQ+U5kVJpzUxmPr3fJQjVqKwtsHoxY/3zITBRRgmFh7l6dY2m2xaW1TWbbGXPtwFGemG0FHl6bnxSW3u4ce+3TAWoFdPnV11Fpx7OtzDGI33mpSkgVA5nE2XZgzKScl+YwL5VJRcQmSPwalphGykZU0iltdgcFUqNCESRiqNiIRjhZjQfGZmr2DdMxnA7QqCIlyxIRO0kU4L/sPCkgjz1Q21lC2OkPn5YQwBYRqGEAAAAASUVORK5CYII=" alt="">
                                                     <p>之马工场 -- 基于自由工作的技术服务平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://www.zhimawork.com/index.php" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('48655a12-42d0-4c7f-9a3f-1ae998e58afd', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('48655a12-42d0-4c7f-9a3f-1ae998e58afd')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://exam.zhimawork.com/user/index.php" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEklEQVQ4jX2TMWtUQRSFvzNvdhOyJrqBSEAxRLELKGn8ATZWgp3iPxCxs9XCf2BhaxDin/AHiIUgARGMxkaTQNAkbnaT3ffeHIv3XnZRcGC4U8y999x7ztHy2pcTRCZhG0n899jQ/MWUESnYjpKMwHZdQoDrOFEAGwvbkuQoDEEeJduGdtYkjBMlVa0BrKqDhGQiEsmm287IgjjKS5IhUWGECu8YwUQ0hCCrNyz18uai3ty+qB+9kfqjQsGWExLIKUlUb6m+9Tvr3nn0xBCyAN97OasL05oKga1eTjs2S5vYg9QMJ4kUks1MDLzYOOD5xgFPbyxwa6nDfr9AZjz7KQuux6hikEQyLHZaZJlYWd9iu1/w/t4y52danJQm1J2rXVQLtSsk8R+e6/qaIDOGKtk1Q0YUZY3ANkGwM8gpSvPx/hUudCKrr7+xd5wTM7Hdz9kZFOzWd39YVg0MMUgMisSDlS5LZyLP3u3x4eeQ+U5kVJpzUxmPr3fJQjVqKwtsHoxY/3zITBRRgmFh7l6dY2m2xaW1TWbbGXPtwFGemG0FHl6bnxSW3u4ce+3TAWoFdPnV11Fpx7OtzDGI33mpSkgVA5nE2XZgzKScl+YwL5VJRcQmSPwalphGykZU0iltdgcFUqNCESRiqNiIRjhZjQfGZmr2DdMxnA7QqCIlyxIRO0kU4L/sPCkgjz1Q21lC2OkPn5YQwBYRqGEAAAAASUVORK5CYII=" alt="">
                                                     <p>考核记录 - 之马工场在线考核</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://exam.zhimawork.com/user/index.php" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('575ff1ea-b82e-4d00-8a48-97a77bdb0311', '6d206705-e887-49ec-9d23-c61455e2dfdc')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('575ff1ea-b82e-4d00-8a48-97a77bdb0311')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -537,133 +271,78 @@
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>书签栏</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('78bd0415-47c6-4f46-886a-ebdf191fbdd0')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('78bd0415-47c6-4f46-886a-ebdf191fbdd0', '书签栏')"> 名称修改</a>
-                                        <a onclick="deleteGroup('78bd0415-47c6-4f46-886a-ebdf191fbdd0')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="http://daohang.qq.com/?fr=bkmark" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>上网导航</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="http://daohang.qq.com/?fr=bkmark" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('83e42cdc-64b9-4eb4-bab5-0eadcf1260f0', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('83e42cdc-64b9-4eb4-bab5-0eadcf1260f0')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://www.baidu.com/?tn=98010089_dg&ch=12" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADCklEQVQ4jXWTTWhUdxTFz/3/33w2CdNMQkMaqfmAGqziIiRtESutkqKgmEUJootSKF0I4kK3ChoUa6ltLWiRbrqsUlsrWlMVP6K2BCtBtDZ+JdFM6ryYmHHezHsv754uEo2bXjhwuPdyFgd+INlNMkcympFyRqTqnOfsZu6POZLdIOnOniKSOjEZ6ZZted25x6WqMjcW8tNNYzxwcEJnMl+EkKSLWRP5gep0RN23/4lW1d1hdt4d9l3x+MXX40xnB1nffI/nL3o6Pa0ahnMhBoCSkHhMxBrI4N1AMhnLRELwKBfCdSNkaywI4fBIKNaKOA6EhABQo6pGhPLTLwUc/fkZutZWUEQlU2XR0ZZCR3sKnqdoabayZHGCh76fRP81HyIUVTUgqRf7PK1ruqfVDXf15OkCb94q88FQ8KK6a9dLfJwPuXOPSyczqG8vH9G8GypJNQDk+kBZrIFUVYqcu1BC64IEnhUVm7fmsb3HRUtTDLU1FuculNDc6EhuLJTb/wQCQBySaG9LIpEAxp8o3luawtBwgM41oyiVCWuBP/t9HP+xHu1tSXz5zQSWvpNC64I4lAqJoojGCK78UYYfEIsWxrG6axRNjTEYI+i7WkLgEx91VaBnRxanz5SwZHEc89+IQRUQVaUqYa3B8EiI9R+PYWg4xA+HX8NfAz6+/W4Kla8YeCXFyg/S2L+3Fo4VRJHCGIEhhdYa/n074IrVo1z1YRqXfm/AorcSKEwRh76qRUWFYN/uGjwYCrFq3SgLBaUxhoDQqKoAlAMHJyWdhmz6LMNlnQ9x7HgRmVcNkklB3lWEIfB6XYyXLnvSe7YoIpQoUjHGGAUArww+nSLv3w9l765arnw/Bb9MKIHPe7J4tyNJpYq1loUCCQggojIdkdZAfz1ZlI2f/IuGBgdda9JiLXCq10MsZtC5IgXPI44cK9IY4MTRejTOj5GEEZIugCyg6D1b5onfiggDoKXZkdY34/B9YuCGj4ePIlZXW2zorsTCVkcAAwDjeI7zDI0vo/t/o8/JzZHs/g8akjdG32H2lQAAAABJRU5ErkJggg==" alt="">
                                                     <p>百度</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://www.baidu.com/?tn=98010089_dg&ch=12" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('8e515464-93eb-48d7-ba0f-7078f01a5304', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('8e515464-93eb-48d7-ba0f-7078f01a5304')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://ark.intel.com/content/www/cn/zh/ark/products/series/77504/intel-celeron-processor-j-series.html" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABk0lEQVQ4jd2Sv0tVcRjGP+/3fD3Hk91AwYgKC3LyH3AUWsTEhLLGUAlMoilw0cEGt3JoCkJwcEoKRT1Di7UJ0hghDl1BQisFxXu993rO+zpcwUsQQtHSM77v83ng/QH/ucbH3dmme28CniRRTUV+b7bTXlcSAeJoarhJanM1oFWDP4cMJ88YnL98Ckq1N7zYyDX7wMPkiieTL3ibZHD+PA0bFQ5aLpLGu9xoO2Rr4zGhXwVZ5PZUjuutl3jZsU4WKVJuxTsvDC31An042UJ8N5pug15FgrtY9haTr2g2ShBMEMZGpbiJlseQ+hXEdTjgHCLNGE1ousnOwS2Qn6gNYPxAGcEFT0FCyoUEpAeJHwB7qAUOMcMkxTREdY3Z+4cg+ZPgALHG6vwaY+aAGYRVxC6QqjmQI8SKQBGR7GSRitk3zJYQ9xx1LzApEeV6MWK07hMmZXyUenYKC+Si9xzVK2xXcRcPUcqnTA+UePTuFa/vfKd/uRPvW9gt5JntrtC/3M70x/2z/+TX+/+BauC/C/o3OgZxmJg+JDr0kQAAAABJRU5ErkJggg==" alt="">
                                                     <p>英特尔® 赛扬® 处理器 J 系列</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://ark.intel.com/content/www/cn/zh/ark/products/series/77504/intel-celeron-processor-j-series.html" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('79cd0857-b62a-4407-925e-5abdfdee2148', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('79cd0857-b62a-4407-925e-5abdfdee2148')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://baijiahao.baidu.com/s?id=1784994881662968888&wfr=spider&for=pc" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADCklEQVQ4jXWTTWhUdxTFz/3/33w2CdNMQkMaqfmAGqziIiRtESutkqKgmEUJootSKF0I4kK3ChoUa6ltLWiRbrqsUlsrWlMVP6K2BCtBtDZ+JdFM6ryYmHHezHsv754uEo2bXjhwuPdyFgd+INlNMkcympFyRqTqnOfsZu6POZLdIOnOniKSOjEZ6ZZted25x6WqMjcW8tNNYzxwcEJnMl+EkKSLWRP5gep0RN23/4lW1d1hdt4d9l3x+MXX40xnB1nffI/nL3o6Pa0ahnMhBoCSkHhMxBrI4N1AMhnLRELwKBfCdSNkaywI4fBIKNaKOA6EhABQo6pGhPLTLwUc/fkZutZWUEQlU2XR0ZZCR3sKnqdoabayZHGCh76fRP81HyIUVTUgqRf7PK1ruqfVDXf15OkCb94q88FQ8KK6a9dLfJwPuXOPSyczqG8vH9G8GypJNQDk+kBZrIFUVYqcu1BC64IEnhUVm7fmsb3HRUtTDLU1FuculNDc6EhuLJTb/wQCQBySaG9LIpEAxp8o3luawtBwgM41oyiVCWuBP/t9HP+xHu1tSXz5zQSWvpNC64I4lAqJoojGCK78UYYfEIsWxrG6axRNjTEYI+i7WkLgEx91VaBnRxanz5SwZHEc89+IQRUQVaUqYa3B8EiI9R+PYWg4xA+HX8NfAz6+/W4Kla8YeCXFyg/S2L+3Fo4VRJHCGIEhhdYa/n074IrVo1z1YRqXfm/AorcSKEwRh76qRUWFYN/uGjwYCrFq3SgLBaUxhoDQqKoAlAMHJyWdhmz6LMNlnQ9x7HgRmVcNkklB3lWEIfB6XYyXLnvSe7YoIpQoUjHGGAUArww+nSLv3w9l765arnw/Bb9MKIHPe7J4tyNJpYq1loUCCQggojIdkdZAfz1ZlI2f/IuGBgdda9JiLXCq10MsZtC5IgXPI44cK9IY4MTRejTOj5GEEZIugCyg6D1b5onfiggDoKXZkdY34/B9YuCGj4ePIlZXW2zorsTCVkcAAwDjeI7zDI0vo/t/o8/JzZHs/g8akjdG32H2lQAAAABJRU5ErkJggg==" alt="">
                                                     <p>前端流程图框架11个：开发组态图、思维导图、拓扑图必备</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://baijiahao.baidu.com/s?id=1784994881662968888&wfr=spider&for=pc" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('52971650-bca3-4b39-8651-e0a4e565feeb', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('52971650-bca3-4b39-8651-e0a4e565feeb')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://theme.typora.io/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACWUlEQVQ4jaVTPU8bQRSc9+5jD6MYUUZOGjeQBhAFyq+gtAu3UX4Af4NI1FSICIkoRRoqSuMKUSCoKKxwEYpJZJ9jG13uvLe7L43vJIpIkTLSaldvNLuzb/SA/wSVh8PDw6DT6bSUUk1mfsY75yqBMebr2dnZ51arpaviyclJXWvdk3+EMaZ7d3f3otR74/H404LTi/U3VHyapu8AwO/3+2+VUm0A1jnnFUXBp6enMh6PEUURACDPc6yurqLT6fi+7xfM7Jj5JQDw0tLSa8/zRESYmWk2m8nR0RE1Gg3q9Xp0cXFBjUaDjo+PaTKZgJkJAC12+FrriTFGwjAk55wwM+/v72NnZwdxHMM5h3a7jWazCWYmay08z6OysZym6SOAOQAqioKWl5extbUFay2yLEOe57DWYnNzE/V6XYwxz2Lk6XT6KCI5EYGIxDmHLMtQRikiYGZkWQZrbSWsHFxeXj6JSCIiEBFxzkFEQESIoghRFIGI4JyDtbayXl2wt7eXW2t/lEURkSAIMBwOcXNzg9vbW4xGI4RhiEWUACDVFwCI1vonEcnCAQVBgIeHB6yvr2NtbU3iOBallCxeFQBVL3wASNN0AIA8z3NEJMYYbGxsYHt7mwCQMcZqrUUp5YgIADhJkrh0gCRJurPZDPP5PHTOgZnJGEN5nsMYA9/3vVqt5kdRFCqlwvv7++75+fkXAFQOk3d1dfVhZWXlPTOHAIyI5AB+ichQREYAHpl5OJ1Ov+3u7n4cDAa/n00jAHS73Te1Wu1VURSjfr///fr6+ung4EADsPgL/gCc7K9iTt5DIwAAAABJRU5ErkJggg==" alt="">
                                                     <p>Themes Gallery — Typora</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://theme.typora.io/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('9d880c97-8ffb-4958-9370-e754a7978e5f', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('9d880c97-8ffb-4958-9370-e754a7978e5f')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://pqina.nl/filepond/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAACdklEQVQ4jSWSMY9UVRiG3+875547M3dmWNnB3VnCGiFmE4KFGrGCwlhobSysNGIHQTqtbNYNpYHCRBMS4x+wNlY0GiggwQQQBaOrWXTdnVlnZu/ce8/5Xov5AU+ePMkjZgYAAEkDROSPetp3ftm3QQDcs7h5sH3Kty72hgC8iBAQ0gCvCuBBM9uruJY1TvBS6Dxqymv/7axn+bvFsYFmYmayUIj8WlXXRvs/VrNdxlKiKofevdXuNYwv+PaF7ooCQnI/xq29nVdCb2t39DhVuZdGCGVQBrVDaT4ojl5/5jkDQXojO6pnQvHJX6MxrMhCT/V80Tru3b1mfrs+XIJ+NRmd9PmV/moCvJEt1bLO/qmlnfuN4G8MBxt5mJt1nF4fjzbH//bAbybj94rBkjp1Ion8dr8k1UE/P7a86v2bv/x5+uGTr/cPLi8dPZ8XtbntOt6tShFREZkkPq2YTE/68FqRf/H3wfejcrfi1s5ebfZGqxNNq6TbTSTpSdbGKgpNAxQikwaIzhTOnACgwJRUAgBUgK5qT5xL+ri0J2Vzcdh/tWivumxzbZCpfjedaxJvesJlIuIT0PE4W4Q70zipcWl7cmP9yA8vDiMZVD57Or45rdVkPeQvt9skJZmpyINpPHf34BCmOdda8novdBxuldVPVZ2DoxS/PLF8YdBPC+Cjh9Nng57u+vfvT2diIWPtDMJMKWSCfbzW3Ty+tGjwgCgwS3x7JV8NevX38takmSVRtSMZznTdhyuddwYdkouDFtcJACNVBMDP0/jb3ILi5njuBJ8+309GAVUVgCcFQhACSaQKNrpuo+sAccJHhzGRAooISQD/A5FeSdmGVx/ZAAAAAElFTkSuQmCC" alt="">
                                                     <p>Easy File Uploading With JavaScript | FilePond</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://pqina.nl/filepond/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('c07f9ab4-e2fc-4918-9f21-9b9f0b4af35e', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('c07f9ab4-e2fc-4918-9f21-9b9f0b4af35e')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://ainas.cc:5001/fsdownload/hU0Oj1sKm/%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>黑群晖工具集合</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://ainas.cc:5001/fsdownload/hU0Oj1sKm/%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('c95687d5-4228-43ca-9bbe-4e86389874e0', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('c95687d5-4228-43ca-9bbe-4e86389874e0')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="http://www.htmleaf.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMklEQVQ4jWPUUvAyYGRkmsfA+N+QgTSw//+//0XMYoLq28jQzMDAwKDIyMiozkSmZhhwZCJFtZOrBUNAsAuKGAsuxabmugymFroMDAwMDNLS4gxSMmIMpua6DM+evGLYsHYPbgN4+bgZWrsKGZxcLbAaLCUjhsLH8AKy5hvX7zFMm7SMIS+jBS7/+dNX3F6QlhGHa+5smc3w+dNXBv9gZ4asvCi4mn27T+A2QEoa4ryasgkMpua6DP7BziiKP3/6yjBt0jLcBsBATKIfg4amEobmxKhKhqdPXqKIw8OAl4+bYdKMGobF8zcy3Lx2H0Xj4vkbGdzskxhuXL+HYRmjtpL3fxgnINgFJYqIASgGkANISolYDfjPwHCfsDIc4D/jeSaGf/+DyDHkPwPD/f///yUBAPTAXSACf3nBAAAAAElFTkSuQmCC" alt="">
                                                     <p>jQuery之家-自由分享jQuery、html5、css3的插件库</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="http://www.htmleaf.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('0e7894fd-e9b6-44b6-a2e0-673edee9b056', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('0e7894fd-e9b6-44b6-a2e0-673edee9b056')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://prisma.yoga/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACyklEQVQ4jY2SaUiUURSG33O/r6m0nLIoM0otUzNtG2yDFsGCMqEMW6H8UbT9K4I2YoaKiohEo6JAQwrRNttogaQF01BLjWzBoEJBC5dZ1Jn5vntPP4aRsiG6vy6Xc9/3Oe85QIjDzMQM6vV6T7r7vI/Z50sOvoeqH/hZAABL784j+Vc4LWcX/+zsvs1sF/8lAIC4ryu2orq+JcyWKUfNyfLnFd8w2NudEYpChHBnDBmx72RR2Xi/z6duFhzFy5p3eqvT2PxPW7vdHkDvcWaeL71nYOI8MzFzi1SseO+Jc/LU5ZIednUsGEjxJ0FbQ/jnH84jZwrLdFh0To6bAALx1pws9erN+7BePXw9ADgc+DOL/uAM36EdR/MZiYsNJC1RjvPFipkVM/O2g6fVxZLyDnZ3pvxOIZiZiEixuzPlzovaPYWl95XVahUEwSnxsUEn3rZ+pXxaVR+JYSM3BsPub4HtEC4acvh00Y1IU5lKKklWazilJkxiAKQUc1pqkm4ZpPG1u09yubt9MhEpABBExDjQu7rg6q21la9rzYiICNHn9fPEqDEUEz2WArRMADh3zXL54EXNOAyP3BRsPRCiZeiUxs9fCQBrBJKGH8nxsWwZpENKSUIQpJRInzuLDMPk8oqqXP75PZqIVEDA57y+PWdF63BrhG5KqaAYs5OnwJQSUiomItI0jTQhtDXLFhol95/FIjIqGwB0ZhZE9IX9Pcf25K674Mi7xIPDw4RtWgLrmkbQNHJ5es3KukaqrH+vNTY1WxbNtUEJzexPMjBGB7rde28u3bp/1dumj8bL4jz69LVFq2v4QG1OD8ZZhyEmZrwzY76tekZS3CNAnCMiMyhARMTsaUt9+OZ7xe7jBaNnJkxCfPQYM2Vq/LfFadOfx0SNeg1nezUampsoPd38a5WDi8HM2W1drmddbs9Z9nk2cEfzhBC1WvD+CzceczOX+ZqWAAAAAElFTkSuQmCC" alt="">
                                                     <p>Prisma 官方中文文档 - 下一代Node.js、TypeScript、Go 的数据库 ORM</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://prisma.yoga/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('ce47cf7f-19ba-43b5-9f76-d317331f19c5', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('ce47cf7f-19ba-43b5-9f76-d317331f19c5')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://blog.51cto.com/u_16175487/7672302" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACxklEQVQ4jU2Sz2vcZRDGP8+873c3yW5208amWkOkVGpRROsvKFYE8eLFQw8VShH1oOZgD6KICEL/AQ+ihwpSTx6Kokiv/sJ/oKUohlZQYlMbjE1rdpvd/b4zHnZbHHiYOcw8D/PM6MJDTx5RSh/Wpb7LpSDCAAIEgDRGRCglcHdzV075Sl3KCZ07+NTVJBZGkisnhQcCPEIyI+p6zGMW3utjM9NgKapSWwnWs5sWRv3tcs/Jd61z6AliOIScFeFY1eDPDz7i7y++Bklzhw/F0vvvUP+zqUtvvFViOFzIRDi4Ne/eQ3Nxj4IgtodRRkOl6Wms2aC5tMjuY0dj1/Gjyu02g7W/QpJF4BkwzPBSE+70f1mJlZdfl81M4/0ByokHzp6hMb9TQIS7fDiUj/1RhghJWFUhiTDpztdeofPYIwxWV7nyyWf8/t5JZh9/lN0vHpNVGZmFAU6QAwkJm2qCROv+A0zvv5eUM+2HH0TNJivHX6V3/mfmjzxPY8ccuCskQBjuKGfqXp/Rxgb9lYv8+sJL3PxjlSiFqX17aS4tjgXcuX3aSWQkIoJLy2+iZMRohKoG1DWYoaoiAEpB/xu8TRClYK0Wi2+fwJpNyo0brJ06PRESRIwxEQLGeVJnQYhg7pmnqbod1f9usXbqNF7KpHGsFLcIATMLTQiNqtLo2qa2zl9Q1DUxGERjYRfjtw18MBivBeAeUQpe1/IIIckMnOJx/dsfQjlT3TGv+z79OKb37UXJuP79T/hWD8s51G5JKZE6s2FSiPAc7pZn22Xjy28shnXsfO5Zpg7s1/Dib2x+9yPrn58htVrU2wNd++psWLtNvbFBuDso6dzBw1eTtDCK8HqrJ8uJ1O1SbvZVen1Su33LzPBeb+KnYqrdsoLWLXksC102oOp23GZm8H4fS5lqbg6Zbl8kd7tUO+a80ZlFssvJffk/1cpYlw4f2WUAAAAASUVORK5CYII=" alt="">
                                                     <p>docker镜像太大 怎么解决_mob649e816138f5的技术博客_51CTO博客</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://blog.51cto.com/u_16175487/7672302" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('d43b67d4-3845-4a8c-bb6b-a57e5a286ef8', '78bd0415-47c6-4f46-886a-ebdf191fbdd0')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('d43b67d4-3845-4a8c-bb6b-a57e5a286ef8')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -671,73 +350,43 @@
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>工具软件</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('56380474-044e-40ef-93f1-e063f78e0459')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('56380474-044e-40ef-93f1-e063f78e0459', '工具软件')"> 名称修改</a>
-                                        <a onclick="deleteGroup('56380474-044e-40ef-93f1-e063f78e0459')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://api.aa1.cn/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACYklEQVQ4jX2TzWtVVxTFf2ufc29i34MkpFRi0IhtIyVoC5FSHAgtnejAkZOIioNi6R/RkRP/Be2k0EGgwwoKtjPBQUSwBUfiJ2hTP4IQfb533zlnd3BvakVwDc5k77NYe+21xRsEoADi/XDAgMxW86fxjx9ROAxN0xYd2ds8XnyrvUBd4/ny7fTt2QhnKlc6EYiLRS2nEPjbBJLjnQC5yEqzcOZc7OqbRcPsjItAbsj9XeEyHMfd3QSbtHJXHGFyBcBKcUvDYoAJmSQTMoQ1w2RpXExSEG6w4gar6pTjpShMmKY/6+OpKKekZjhWbpJKduYPzqo3VyunAhKwKoNlnCIFMUoNi8fnOfnn15ra26Oaisx9NUNvxzaa1Gjp5E5m90+RSkZBgmUitEN7cYIC84dmeXT1GbuPbOfv6xsc/vkAj9Y2uH9xnRf3BoRKnSWtSS2BwXiU+HDfFDu/+YhX/wzZc3SOl+uveXztObd+ecDS8d2UUWawMaTgqB0c23ozhZm9fR5eecLl09fZfDhgeqHP9GKfpVML/PXTXQZPR7x+2iCEd2sSnK8+qRfW5HxRNCpljNydMY0+/+5jti/PcOmHNbYx6XW/ooyzq9SGuHm7efBlhBvgu7x1VR4qIUkhm9/5dZ37vz2hH3tYBXmYHeGSumjeIMKKw6gARW3OcS8oQBokxi/BKuEZZHJw7377mxyIvrw2iFHEICqT1xbChMVqwuS1icpEDBAjXptLPVhVhAvZ/djvUpqUM3SKISGc/8e5k4ZQkdKkebgCF9J/F7OD8x/U1OW9h9yhobHHfD8A+Bfvvg6T4LeF0QAAAABJRU5ErkJggg==" alt="">
                                                     <p>免费API - 提供免费接口调用平台</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://api.aa1.cn/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('81f639e2-fc6d-49e1-8d20-bf59c90c5b98', '56380474-044e-40ef-93f1-e063f78e0459')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('81f639e2-fc6d-49e1-8d20-bf59c90c5b98')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://pd.zwc365.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>文件加速下载服务-免费</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://pd.zwc365.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('4545b326-9bfb-4db3-b908-f40fd715dd3c', '56380474-044e-40ef-93f1-e063f78e0459')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('4545b326-9bfb-4db3-b908-f40fd715dd3c')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://doc.embedfire.com/openwrt/user_manal/zh/latest/User_Manual/openwrt/docker.html" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABuUlEQVQ4jZ2TvWtTURjGf+fcJDfNSWvahNioUFHSFis6aKaC1NZB0EWEQicRxamD/gERoWM/wDFjoUUncVeH4lihiuKgNBCIFbEmV8xHc5Pe4yCcmNgbxXd8n/f58bzn5YiT2fy8FCwAMbpKALq72S7H02SlnxlACBhNBv0AMSlYkH5mAE/D5QnlnwFispcKcHE0QiJq+eo9AXElGTsc4uwx+/8Ad6cHCViCuPJPEDioaQm4NzPI7Ll+AErV/X8HRG3B0vUk02MRAGqux2Zhz+iJqMVupQ3sWCGuJGs3U8astWblRZnvdc/MzE91Hs0AAhIeziY5lbKNefFZmY0PNTMcsn5dJdYn/wRcGldkRsJG2P7aZONjjduTh0wvczzM8ICFstsA8wYX0n0d0YpOi6l0hJlxxdM3FUIBwYMrCRotTbXRXsmgnryucC23Q+FbE4AzR22KToshJXl06wirN1KMxIO823Fx6gcAXhX2eP/Z5c76F/K7LkPKYu58P483f1Cq7qM11Jsey89LHUlF+n6+TNd/iIQEc5kBrp5WnEgEqTQ8tooNci8d3n5yfx91RK/v/JdyPE32J66vg4QRTw0yAAAAAElFTkSuQmCC" alt="">
                                                     <p>10. 基于Docker的功能拓展 — [野火]OpenWrt用户手册—基于LubanCat-RK系列板卡 文档</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://doc.embedfire.com/openwrt/user_manal/zh/latest/User_Manual/openwrt/docker.html" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('23846069-ed35-41d0-b712-3bd6f0b89aa6', '56380474-044e-40ef-93f1-e063f78e0459')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('23846069-ed35-41d0-b712-3bd6f0b89aa6')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://hub.daocloud.io/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACuUlEQVQ4jW2T20tUURSHv73PGfXMaE1GL9lNMy/dgwpTi+yCXZEg6KXESgqCHoKKitCysuwPiAiCKIqCIKIyQShRyqKgCLLUSQuzUmd6GLVzPOfM2T1MTmWtx7X5fXut31pLLCkqmYOQV4DFjAmlFABCiLFPAC9RXoUuhLyoxoiVUti2/RcgKSlpLGixEPKirqB4NON5Hp7nYaSksGDeXMo2rQfg7v2HvHvfjmlZSCmRUsY/gmJ9VGyNjJAWCIAQ5GTPpO5MNRPT0wEoXLaUg0eq6Ah9AKUYHB4mJTk5Xt2S4tXKdhyWFxawb89uUlMD3Lp9h7Z37axauQKAR03NzM7PZdvWLQwNDXPh0mVanj4jyedDAti2TVFhAfl5OUydkkFlxQ78foOa2jpqauvw+w0qK3YwdUoG+Xk5FBUWYNs2QBwgEHR0hgAIR76zfddemp+0EgwGCQaDND9pZfuuvYQj3wHo6AwhiBuqA/gNg/qGRtICAco2b8A0LXQtYQ+6pmOaFtFolGvXb1Lf0IjfMADQMqZlnXBdl+yZWYwfP47rN28zODRELBZLjE0IgaZrtD5/QXBCEMdxGQiH0TQt3oJS4DgOVUcPUbmzHNeNYVkjKKVQSmFZI7hujMqd5VQdPYTjOPxakXgLmiYJRyJ86+undE0Jd+7e44dp8ur1GwAWLZyP3zAoXVPCt75+wpEImib/BGhEo4NUnzpL1bHDpKWmsn/fHrq7PwGQmTmdK1dv0PvlKzW154lGB/H5fL/3YNSsH6ZJVuYMNCk5d7qa3FnZALR3hjhy/CQxz6Or+2PCwEQFo+E3DHp6PuM4Lo+bWhKAx00tdIa68Pn0v8S/KljVD2LSn0mlFI7rsnHdWgAeNDTi0/X/XKUa0CZPz+oRsAwYl6AKgZSSt23vae8IkfzvJQL0KiEO/ARhdwxyskj8cgAAAABJRU5ErkJggg==" alt="">
                                                     <p>Hub · DaoCloud</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://hub.daocloud.io/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('50ceaf5a-8ced-4d2f-9c51-8b685d756890', '56380474-044e-40ef-93f1-e063f78e0459')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('50ceaf5a-8ced-4d2f-9c51-8b685d756890')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://dockerproxy.com/" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC2UlEQVQ4jZ2TT2xUZRTFz/3+vDdvhvYNnXaASgpiXBBaMCyQxA0rFyYmGGJctSv+bFxUE0KMm2dM2DQMLhpXJpW6UxYuTEzYQAxho8GY2siCYDECCVA6086bmfe977vXRfnTRN1wdjf33LM5vwtsVSZqy0RoLY+gtTwCgP7HA/NikSlkxOncb6+aWnRSg45B+BVFBP7y1r0AueZz91XnLP256c0YL5KFAJLGF7/P6KQyp0zUFO/AoUSnYKRJBGVjiHcPQ39wdnV2cvHZjQIyBZA05pemdTW5JN41i27H9ft5SMD86ZER3gYXXLftVHBNXU0uNeaXpgESIFMEAPWLf+y1MW4qUKrFcz02ehAC6rHBmUMNtH55hMeDgMKHUI1jpQidQVsOtz/Zv6IAQFs+ZSu17Wv5wFtN+tybYzh9sIETrw9TvwzUKwNyF3BsYkj70vkNxNv1EE4BgAYyNfzuwc+7Zdh9fF+N3mgmlJeMrvM0YBEhwnjN0FQzwWdv7cCjXiBrNHWL0m78MLqg0Hq7TiLjHDzqsaaxxIAIMFqJIZBnptGalWaiyTFk4Z0JfWYqRc+F8eHW+3UzjBRFYOysWswcqGPXtgheAE2AiEAEEAAVq2RnzdDJH//iy3d6ZBXhMdow6+vftZtjH9xvlzRRMUr2pJGCMED0tGUBRAik8O2tNfl6+YmMpkMkobyPj6+0FbKMrcLVAQxd+PlhgAhAz2CTzRBSuP53Lud+eoA0MkEZSxJwFcj4aY2/7q1Ukptdx+l7r9X49KGG3lePoAlY6ZT4/nYHC0tPUHgOcRQphnTKAofbH+1foU2QMm7ML03bqLq4nvcREbtGYjQBtDbw6HqWIauD1joSEyOUvZnVD6e+eQ7SVpSjajLH2jZLVwDsYYhgjAHrCPzfKAMACbJMrc5OLvY63aNc5Octwg0DuQvhu977G2Wxcb5Yz4+uzk4uItvEH//SS7zzPxevZEY9o2QsAAAAAElFTkSuQmCC" alt="">
                                                     <p>Docker Proxy 镜像加速</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://dockerproxy.com/" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('cd72ce6e-ae79-4a46-aeb4-95a2c9065272', '56380474-044e-40ef-93f1-e063f78e0459')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('cd72ce6e-ae79-4a46-aeb4-95a2c9065272')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -745,49 +394,29 @@
                             <div class="group-item">
                                 <div class="flex justify-between align-center">
                                     <h3>睿兔跑腿小程序</h3>
-                                    <div class="common-btn-group">
-                                        <a class="common-btn primary" onclick="showAddBookmark('6f96df27-014f-478e-a439-d5e22d6b6af2')">+新增书签</a>
-                                        <a class="common-btn primary" onclick="groupUpdateShow('6f96df27-014f-478e-a439-d5e22d6b6af2', '睿兔跑腿小程序')"> 名称修改</a>
-                                        <a onclick="deleteGroup('6f96df27-014f-478e-a439-d5e22d6b6af2')" class="common-btn danger">删除</a>
-                                    </div>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://we9vme.axshare.com/#id=k6exls&p=%E8%83%8C%E6%99%AF%E3%80%81%E8%B5%84%E9%87%91%E6%96%B9%E5%90%91%E3%80%81%E7%BB%93%E6%9E%84%E5%9B%BE" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAp0lEQVQ4jbXSIQ7CMBTG8f8bTHIAFAbFEZZQyR3QJIyaXWdwABIOgENtk0gsasFhCDNLEN0F6FbaUPvy/frl5QlVvseQ4vOUFqHMjVcYQCgi7zCAIQkDILYCk1HsJFiBd7LhMFf+AMB2usAsd71tnHbQ18YJqNuG9F5+nY2HwqvbmcvrYZ1bgbptmF2Pg+3CLhHHHfwTeIYCWYTSglAAn19+BtYofeoAsskmOOo7PfQAAAAASUVORK5CYII=" alt="">
                                                     <p>背景、资金方向、结构图</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://we9vme.axshare.com/#id=k6exls&p=%E8%83%8C%E6%99%AF%E3%80%81%E8%B5%84%E9%87%91%E6%96%B9%E5%90%91%E3%80%81%E7%BB%93%E6%9E%84%E5%9B%BE" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('350557b0-1cfa-44cf-99a9-c8c541d209cb', '6f96df27-014f-478e-a439-d5e22d6b6af2')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('350557b0-1cfa-44cf-99a9-c8c541d209cb')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="https://www.figma.com/file/HMJybN83DwWLbmhaxe2e2a/%E7%9D%BF%E5%85%94%E9%A1%B9%E7%9B%AE?type=design&node-id=0-1&mode=design&t=L0PqKTe0F00lxn7V-0" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACd0lEQVQ4jW2TO4hVVxiFv7X3OffMuTnzYK5jYYgEjQ9GEDRNElQEU2RIZTH2kTysLNMFbpdSxMJC0EoLp7EJFmGSIQkMRETLVBECSSDj5M7jPs49j/2nmJk7Zmb+6mfzr7XXv/ba4oBanZue2Omn35sbnevOw429swIwkMDW5g4fj+Ox2zX2AWbgImXvXkJRZNvzLwj5V7r16PcdjNtmscfgXdS432y4T4VaXrQiaVpe08i1MFqk6cfQuGtt3I6CUXP5Mqmh84MyFGbUZcAqI1iwQLBgUJPnBegj/plvCmxEYKCZJfqGltPYNURlngpZ5eS9wzmnuvIkSaPGvWBlYbBPgSBMVn9cz4vh97WmfOmmrHBTkPfXKIdr3SQz+r2n/tXLz7RAbdv+RVtgA8Q3WHKiSRXTNeeQL1lZPP3n1R9Ovv0t8hdWo7SxOqDiiUaYbQWyecyfnKwfTI4xl1vmCjL1XJZ8d+zU7c5UdrGjtE4nuXIkru/RtoNNBH+uW1jpvAVXmw0Tm4gd77tuKGOCwjqFyX3I7EoTZG8QmFaW6AfZctZQ7CuZk5T11VFty27CxYacJmgAz1lY2m9iG4Xx3/RFr8di3izUS4cMx8riyN/ljXrTFuW1ETZ5WtXF5yxcqzHTKIkYW6789eXR5PU7d5uD5BMJZ4GNzvjXM5yhOPSLjb++oM0DowzA43mfHj/7ow69dbHqbFTyPrKqWi+y1lFO3Nz9A2ZC2on21jMCcGYmpbBzrA9KHyInKRiRp/g3/P/KXfCuB4aYPdw342eyJEahJkucYc+Ypb9X9n4CALVDbuGmbea/4l0UuvlPpnADtQP2xqp76j8hqhLIlsa+QwAAAABJRU5ErkJggg==" alt="">
                                                     <p>https://www.figma.com/file/HMJybN83DwWLbmhaxe2e2a/睿兔项目?type=design&node-id=0-1&mode=design&t=L0PqKTe0F00lxn7V-0</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="https://www.figma.com/file/HMJybN83DwWLbmhaxe2e2a/%E7%9D%BF%E5%85%94%E9%A1%B9%E7%9B%AE?type=design&node-id=0-1&mode=design&t=L0PqKTe0F00lxn7V-0" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('254bd827-c664-488d-a4fe-4e4af976c9f1', '6f96df27-014f-478e-a439-d5e22d6b6af2')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('254bd827-c664-488d-a4fe-4e4af976c9f1')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
-                                            <div class="bookmark-item" >
+                                            <a class="bookmark-item" href="http://192.168.0.89:8091/rh/doc.html#/home" target="_blank">
                                                 <div class="bookmark-a-div">
                                                     <img src="" alt="">
                                                     <p>邦芒</p>
                                                 </div>
-                                                <div class="bookmark-controllers">
-                                                    <a class="bookmark-item-link" href="http://192.168.0.89:8091/rh/doc.html#/home" target="_blank">跳转链接</a>
-                                                    <a  class="bookmark-item-update" onclick="showUpdateBookmark('321acb31-c1df-45b5-8dd4-aa36ceb0b1ec', '6f96df27-014f-478e-a439-d5e22d6b6af2')">修改</a>
-                                                    <a class="bookmark-item-delete" onclick="deleteBookmark('321acb31-c1df-45b5-8dd4-aa36ceb0b1ec')">删除</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                     
                                 </div>
                             </div>
@@ -812,13 +441,7 @@
     </script>
 
 <script>
-    $(".bookmark-a-div").on("click", function (ev) {
-        if($(this).siblings(".bookmark-controllers").hasClass("show")) {
-            $(this).siblings(".bookmark-controllers").removeClass("show")
-        } else {
-            $(this).siblings(".bookmark-controllers").addClass("show")
-        }
-    })
+
     var categorys = JSON.parse(`
                             [{"name":"侧耳1231撒","sort":0,"id":"069cdf4c-174b-47f8-a0aa-956943e31149","create_time":"2024-05-22 11:04:08","update_time":"2024-05-22 14:57:24"},{"name":"的设备","sort":0,"id":"7f731a76-a620-4704-97c7-a8c99b3ac26c","create_time":"2024-05-22 11:08:16"}]
                         `)
@@ -831,224 +454,74 @@
         $("#typeLeft").addClass("typeLeft-hidden")
     })
 
-    function showCategoryAdd(){
-        $("#typeForm .dialog-header").text("新增分类")
-        $("#typeForm").show()
-        $("#typeForm form").attr("action", "/api/admin/addCategory").find('input[name="name"]').val("")
-        $("#typeForm form input[name='id']").val("")
-    }
-    function updateCategory(id) {
-        if(!id) return
-        $("#typeForm .dialog-header").text("修改分类")
-         $("#typeForm").show()
-         $("#typeForm form").attr("action", "/api/admin/updateCategory").find('input[name="name"]').val(categorys.find(item => item.id === id).name)
-        $("#typeForm form input[name='id']").val(id)
-    }
 
-    function showBookmarkImport() {
-        $("#typeFormRename").show()
-        var categoryHtml = ''
-        categorys.forEach(item => {
-            categoryHtml += `<option value="${item.id}">${item.name}</option>`
-        })
-        $("#categoryId").html(categoryHtml).niceSelect()
-        $("#categoryId option[value='']").attr("selected", true)
-        $("#categoryId").niceSelect("update")
-    }
+    $("#layout-lay > a ").on("click", function (ev) {
+        var dataType = $(this).attr("data-type")
 
-    function groupAddShow() {
-        $("#groupForm .dialog-header").text("新增书签分组")
+        $(this).addClass("active").siblings().removeClass("active")
+        switch (dataType) {
+            case 'list':
+                $("#itemWidthInput").hide()
 
-        $("#groupForm").show().find("form").attr("action", "/api/admin/addGroup").find("input[name='id']").val("")
+                $(".bookmarks").removeClass("bookmark-flex")
+                $(".bookmark-item").css("width", 'auto')
 
-        $("#groupForm form input[name='name']").val("")
-        var categoryHtml = ''
-        categorys.forEach(item => {
-            categoryHtml += `<option value="${item.id}">${item.name}</option>`
-        })
-        $("#groupCategoryId").html(categoryHtml).niceSelect()
-        $("#groupCategoryId option[value='']").attr("selected", true)
-        $("#groupCategoryId").niceSelect("update")
-    }
-    function groupUpdateShow(id,name) {
-        $("#groupForm .dialog-header").text("修改书签分组")
-        $("#groupForm").show().find("form").attr("action", "/api/admin/updateGroup").find("input[name='id']").val(id)
-        $("#groupForm form input[name='name']").val(name)
+                break;
+            case 'len':
+                $("#itemWidthInput").show()
+                $(".bookmarks").addClass("bookmark-flex")
 
-        var categoryHtml = ''
-        categorys.forEach(item => {
-            categoryHtml += `<option value="${item.id}">${item.name}</option>`
-        })
-        $("#groupCategoryId").html(categoryHtml).niceSelect()
-        $("#groupCategoryId option[value='']").attr("selected", true)
-        $("#groupCategoryId").niceSelect("update")
-    }
+                $("#itemWidthInput > a:nth-child(2)").click()
+                break;
+            case 'auto':
+                $("#itemWidthInput").hide()
+                $(".bookmarks").addClass("bookmark-flex")
+                $(".bookmark-item").css("width", 'auto')
+                break;
+        }
+    })
+
+    $("#itemWidthInput > a ").on("click" , function(ev) {
+        const width = +$(this).text()
+
+        $(".bookmark-item").css("width", width + 'px')
+
+        $(this).addClass("active").siblings().removeClass("active")
+    })
 
 
-    function showAddBookmark(groupId) {
-        $("#bookmarkForm .dialog-header").text("新增书签")
-
-        $("#bookmarkForm").show().find("form").attr("action", "/api/admin/addBookmark").find("input[name='id']").val("")
-
-        $("#bookmarkForm form input[name='name']").val("")
-        var categoryHtml = ''
-        groupList.forEach(item => {
-            categoryHtml += `<option value="${item.id}">${item.name}</option>`
-        })
-
-        $("#bookmarkForm form  input[name='href']").val("")
-        $("#bookmarkForm form  input[name='icon']").val("")
-        $("#formGroupId").html(categoryHtml).niceSelect()
-        $(`#formGroupId option[value='${groupId}']`).attr("selected", true)
-        $("#formGroupId").niceSelect("update")
-        pond1.removeFiles()
-    }
-
-    function showUpdateBookmark(id, groupId){
-        $("#bookmarkForm .dialog-header").text("修改书签")
-        $("#bookmarkForm").show().find("form").attr("action", "/api/admin/updateBookmark").find("input[name='id']").val(id)
-        var _bookmark = groupList.find(item => item.id === groupId).bookmarks.find(item1 => item1.id === id)
-
-        // console.log(_bookmark)
-        $("#bookmarkForm form input[name='href']").val(_bookmark.href)
-        // $("#bookmarkForm form  input[name='icon']").val()
-        $("#bookmarkForm form  input[name='name']").val(_bookmark.name)
-        var categoryHtml = ''
-        groupList.forEach(item => {
-            categoryHtml += `<option value="${item.id}">${item.name}</option>`
-        })
-        $("#formGroupId").html(categoryHtml).niceSelect()
-        $(`#formGroupId option[value='${groupId}']`).attr("selected", true)
-        $("#formGroupId").niceSelect("update")
-        pond1.addFile(_bookmark.icon.replace(/\\/g, "/"))
-    }
+    $("#layout-wrap > a ").on("click", function (ev) {
+        var dataType = $(this).attr("data-type")
+        $(this).addClass("active").siblings().removeClass("active")
+        switch (dataType) {
+            case 'wrap':
+                $(".bookmarks").removeClass("bookmark-nowrap")
+                break;
+            case 'nowrap':
+                $(".bookmarks").addClass("bookmark-nowrap")
+                break;
+        }
+    })
 
 
-    function deleteCategory() {
-        newConfirm({
-            title: '删除分类',
-            content: '确定删除该分类吗？',
-            ok: function () {
-                $.ajax({
-                    url: '/api/admin/deleteCategory',
-                    data: {
-                        id: categoryId
-                    },
-                    success: function (res) {
-                        if (res.success) {
-                            window.location.href = '/?success=1&message=删除成功'
-                        }
-                    }
-                })
+
+    $("#searchInput").on("input" , function (ev) {
+       var searchText =  $(this).val()
+
+        $(".bookmark-item  .bookmark-a-div > p").each(function(k, el) {
+            if($(el).text().indexOf(searchText) > -1) {
+                $(el).closest(".bookmark-item").show()
+            } else {
+                $(el).closest(".bookmark-item").hide()
             }
         })
-
-
-    }
-    function clearCategory() {
-        newConfirm({
-            title: '清空分类',
-            content: '确定清空该分类下的所有书签吗？',
-            ok: function () {
-                $.ajax({
-                    url: '/api/admin/clearCategory',
-                    data: {
-                        categoryId: categoryId
-                    },
-                    success: function (res) {
-                        if (res.success) {
-                            window.location.href = '/?success=1&message=清空成功'
-                        }
-                    }
-                })
-            }
-        })
-    }
-    function deleteGroup(groupId) {
-        newConfirm({
-            title: '提示',
-            content:"确定要删除本分组吗？",
-            ok: () => {
-                $.ajax({
-                    url: '/api/admin/deleteGroup',
-                    data: {
-                        groupId,
-                    },
-                    success: res => {
-                        showMessage(res.success.toString(), res.message)
-                        if(res.success === 1) {
-                            window.location.href = `/?success=${res.success}&message=${res.message}`
-                        }
-                    }
-                })
-            }
-        })
-    }
-
-    var categoryId = ""
-
-    function handleToggle(id) {
-        var event = window.event || arguments[0];
-        // console.log(event.detail)
-        $(`#${id}`).attr('checked', event.detail.value).val(event.detail.value)
-    }
-
-    function deleteBookmark (id) {
-        newConfirm({
-            title: '删除书签',
-            content: '确定删除该书签吗？',
-            ok: () => {
-                $.ajax({
-                    url: '/api/admin/deleteBookmark',
-                    data: {
-                        id: id,
-                    },
-                    success: res => {
-                        showMessage(res.success.toString(), res.message)
-                        if(res.success === 1) {
-                            window.location.href = `/?success=${res.success}&message=${res.message}`
-                        }
-                    }
-                })
-            }
-        })
-    }
-
+    })
 </script>
 
 
 
 
-    <script type="module">
-        import zh_cn from '/plugins/filepond/locale/zh-cn.js';
-        FilePond.setOptions(zh_cn);
-    </script>
-    <script>
-        var pond,pond1
-        FilePond.registerPlugin(FilePondPluginFileValidateSize);
-        FilePond.registerPlugin(FilePondPluginImagePreview);
-        FilePond.registerPlugin(FilePondPluginFileValidateType);
 
-
-        $(document).ready(function () {
-             pond = FilePond.create($("#bookmark")[0]);
-            pond.setOptions({
-                allowMultiple: false,
-                storeAsFile: true,
-                maxFileSize: '5MB',
-            });
-
-            pond1 = FilePond.create($("#iconInput")[0]);
-            pond1.setOptions({
-                allowMultiple: false,
-                storeAsFile: true,
-                maxFileSize: '5MB',
-            });
-
-            // pond.addFile("")
-        })
-
-    </script>
 </div></body>
 
 </html>

@@ -2,27 +2,23 @@
 
 <head>
 
-    <link rel="stylesheet" href="/css/modules/index.css">
-    <title>书签导航转换器</title>
-
-    <script src="/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="/css/modules/preview.css">
+    <title><%-siteConfig.title%></title>
+    <link rel="shortcut icon" href="<%-siteConfig.banner%>">
 </head>
 
 <body>
     <section id="container" class="scroll-999">
         <div class="flex justify-between align-center page-title ">
             <h2 class="flex align-center">
-                <a id="leftController" class="left-controller ml-5px">
-                    <i class="iconfont icon-category"></i>
-                </a>
-                <a href="/" class="color-fff ml-16px">书签导航转换器</a>
+<!--                <a id="leftController" class="left-controller ml-5px">-->
+<!--                    <i class="iconfont icon-category"></i>-->
+<!--                </a>-->
+                <a href="/index.html" class="color-fff ml-16px"><%-siteConfig.title%></a>
             </h2>
-            <div class="mt-0px mb-0px pd-16px  color-fff ">
 
-                <a href="/manager" class="color-fff font-15px">
-                    <i class="iconfont icon-nav_icon_xitongshezhi color-fff"></i>内容管理
-                </a>
-            </div>
+
+
         </div>
 
 
@@ -30,26 +26,51 @@
 
 
         <div class="flex h-100per">
-            <section id="typeLeft" class="typeLeft-hidden">
-                <div class="flex justify-end">
-                    <a id="exitTypeLeft">
-                        <i class="iconfont icon-exit"></i>
-                    </a>
-                </div>
+<!--            <section id="typeLeft" class="typeLeft-hidden">-->
+<!--                <div class="flex justify-end">-->
+<!--                    <a id="exitTypeLeft">-->
+<!--                        <i class="iconfont icon-exit"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="flex justify-center pd-20px">-->
+<!--                    <a href="/index.html">-->
+<!--                        <img src="<%-siteConfig.banner%>" alt="" class="w-200px h-200px" style="object-fit: cover; border-radius: 50%;">-->
+<!--                    </a>-->
+<!--                </div>-->
 
 
-                <div class="md-menu">
-                    <%categorys.forEach(function(item, k){%>
-                    <a class="type-item flex <%-item.id === id ? 'active' : ''%>" data-type="<%-item.id%>" href="/?id=<%-item.id%>">
-                        <span><%-item.name%></span>
-                        <i class="iconfont icon-right"></i>
-                    </a>
-                    <%})%>
-                </div>
-            </section>
+<!--                <div class="md-menu">-->
+<!--                    <%categorys.forEach(function(item, k){%>-->
+<!--                    <a class="type-item flex <%-item.id === id ? 'active' : ''%>" data-type="<%-item.id%>" href="/index.html?id=<%-item.id%>">-->
+<!--                        <span><%-item.name%></span>-->
+<!--                        <i class="iconfont icon-right"></i>-->
+<!--                    </a>-->
+<!--                    <%})%>-->
+<!--                </div>-->
+<!--            </section>-->
             <section id="editRight">
                 <div class="dashboard">
+                    <div class="content-search flex align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M10 4a6 6 0 1 0 0 12a6 6 0 0 0 0-12m-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10"/></svg>
+                        <input id="searchInput" placeholder="请输入关键词">
+                    </div>
 
+                    <div id="layout-lay" class="layout-controllers">
+                        <a data-type="list" class="active">列表</a>
+                        <a data-type="len">定长</a>
+                        <a data-type="auto">自适应</a>
+                    </div>
+
+                    <div id="itemWidthInput" style="display: none">
+                        <a>100</a>
+                        <a>150</a>
+                        <a>200</a>
+                        <a>300</a>
+                    </div>
+                    <div id="layout-wrap" class="layout-controllers mt-16px">
+                        <a data-type="nowrap" class="active">不换行</a>
+                        <a data-type="wrap" class="">换行</a>
+                    </div>
                     <div id="appsContainer">
 
                         <% groupList.forEach(function(item0, k0){%>
@@ -57,7 +78,7 @@
                                 <div class="flex justify-between align-center">
                                     <h3><%-item0.name%></h3>
                                 </div>
-                                <div class="bookmarks">
+                                <div class="bookmarks bookmark-nowrap">
                                     <% item0.bookmarks.forEach(function(item1, k1){%>
                                             <a class="bookmark-item" href="<%-item1.href%>" target="_blank">
                                                 <div class="bookmark-a-div">
@@ -103,17 +124,67 @@
     })
 
 
+    $("#layout-lay > a ").on("click", function (ev) {
+        var dataType = $(this).attr("data-type")
 
-    var categoryId = "<%-id === undefined ? '' : id%>"
+        $(this).addClass("active").siblings().removeClass("active")
+        switch (dataType) {
+            case 'list':
+                $("#itemWidthInput").hide()
 
-    function handleToggle(id) {
-        var event = window.event || arguments[0];
-        // console.log(event.detail)
-        $(`#${id}`).attr('checked', event.detail.value).val(event.detail.value)
-    }
+                $(".bookmarks").removeClass("bookmark-flex")
+                $(".bookmark-item").css("width", 'auto')
+
+                break;
+            case 'len':
+                $("#itemWidthInput").show()
+                $(".bookmarks").addClass("bookmark-flex")
+
+                $("#itemWidthInput > a:nth-child(2)").click()
+                break;
+            case 'auto':
+                $("#itemWidthInput").hide()
+                $(".bookmarks").addClass("bookmark-flex")
+                $(".bookmark-item").css("width", 'auto')
+                break;
+        }
+    })
+
+    $("#itemWidthInput > a ").on("click" , function(ev) {
+        const width = +$(this).text()
+
+        $(".bookmark-item").css("width", width + 'px')
+
+        $(this).addClass("active").siblings().removeClass("active")
+    })
+
+
+    $("#layout-wrap > a ").on("click", function (ev) {
+        var dataType = $(this).attr("data-type")
+        $(this).addClass("active").siblings().removeClass("active")
+        switch (dataType) {
+            case 'wrap':
+                $(".bookmarks").removeClass("bookmark-nowrap")
+                break;
+            case 'nowrap':
+                $(".bookmarks").addClass("bookmark-nowrap")
+                break;
+        }
+    })
 
 
 
+    $("#searchInput").on("input" , function (ev) {
+       var searchText =  $(this).val()
+
+        $(".bookmark-item  .bookmark-a-div > p").each(function(k, el) {
+            if($(el).text().indexOf(searchText) > -1) {
+                $(el).closest(".bookmark-item").show()
+            } else {
+                $(el).closest(".bookmark-item").hide()
+            }
+        })
+    })
 </script>
 
 

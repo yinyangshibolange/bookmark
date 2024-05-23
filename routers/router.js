@@ -94,7 +94,6 @@ module.exports = [{
 }
    , {
         genSite: true,
-        title: '书签导航1.0',
         meta: "",
         index: "/index.html",
         path: "htmls/preview.ejs",
@@ -127,6 +126,13 @@ module.exports = [{
                     })
                 }
                 return []
+            },
+            siteConfig: async () => {
+                const siteConfig = siteConfigDb.getAll().data[0]
+                const { title, banner, custom_css } = siteConfig || {}
+                return {
+                    title, banner, custom_css,
+                }
             }
         }
     }

@@ -512,6 +512,26 @@ body {
     }
 
     .bookmarks {
+      &.bookmark-flex {
+        display: flex;
+        flex-wrap: wrap;
+        & > .bookmark-item {
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+      }
+      &.bookmark-nowrap {
+
+        & > .bookmark-item {
+          .bookmark-a-div {
+            & > p {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
       & > .bookmark-item {
         display: block;
         background: #f2f2f2;
@@ -540,6 +560,7 @@ body {
             margin: 0;
             color:#333;
             line-height: 1.6;
+            word-break: break-all;
           }
         }
         .bookmark-controllers {
@@ -577,6 +598,85 @@ body {
         }
       }
     }
+  }
+
+}
+
+
+.layout-controllers {
+  background: #f2f2f2;
+  border-radius: $common-radio;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  overflow: hidden;
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+
+
+
+  & >a {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover{
+      background: $primary-color;
+      color:#fff;
+    }
+
+    &.active {
+      background: rgba($primary-color, 0.85);
+      color:#fff;
+    }
+  }
+}
+#itemWidthInput {
+  border-radius: $common-radio;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+
+  width: fit-content;
+  overflow: hidden;
+  margin-top: 16px;
+
+  & > a {
+    padding: 10px;
+    cursor: pointer;
+    color: #333;
+    display: block;
+
+    &:hover{
+      background: rgba($primary-color, 0.85);
+      color: #fff;
+    }
+    &.active {
+      color: #fff;
+      background: $primary-color;
+    }
+  }
+}
+
+.content-search {
+  background: #f2f2f2;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  color: #999;
+  padding-left: 12px;
+
+
+  &> input {
+    padding: 16px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    line-height: 25px;
+    background: #f2f2f2;
   }
 
 }
